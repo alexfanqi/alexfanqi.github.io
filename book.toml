@@ -5,5 +5,9 @@ multilingual = true
 src = "src"
 title = "Road to Gentoo on RISC-V"
 
+[build]
+build-dir = "docs"
+
+
 [output.html]
 mathjax-support = true
