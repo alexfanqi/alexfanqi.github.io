@@ -7,7 +7,7 @@ emerge是e-merge，emaint是e-maintanence
 * bash-completion, gentoo-bashcomp, tldr， 自动补全和太长不读提示，让生活更美好
 * porthole： portage的一个gui前端
 * layman：管理overlay仓库的
-* 查找其他的overlay，[](http://gpo.zugaina.org/Overlays) [](https://overlays.gentoo.org/)
+* 查找其他的overlay，[gpo.zugaina.org/Overlays](http://gpo.zugaina.org/Overlays) [overlays.gentoo.org/](https://overlays.gentoo.org/)
 
 ## 探索实践问题
 最后留一些问题方便自学探索熟悉gentoo，感谢mentor提供，我自己的回答放在文档最后对应章节。

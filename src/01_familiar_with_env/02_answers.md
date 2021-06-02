@@ -13,10 +13,10 @@
 3. 还是如何根据某个文件寻找这个文件属于的包名？但这次这个包并没有安装在系统上。
     * app-portage/pfl 或者 [Portage File List](https://www.portagefilelist.de/site/query)
 4. overlay是什么
-    * 指的是ebuild的软件仓库
+    * 大致就是指的ebuild软件仓库
 5. 怎么配置和管理服务，启用禁用，runlevel？openRC和systemd是什么？
     * [openrc & systemd](https://wiki.gentoo.org/wiki/Gentoo_Cheat_Sheet#OpenRC)
     * 如今日常发行版基本默认都用的systemd，Gentoo、默认的openRC
-    * [](https://wiki.gentoo.org/wiki/Comparison_of_init_systems)
+    * [各种init系统的比较](https://wiki.gentoo.org/wiki/Comparison_of_init_systems)
 6. 谁是willikins？
     * [willikins](https://wiki.gentoo.org/wiki/Willikins) 是gentoo irc上的bot

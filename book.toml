@@ -11,3 +11,7 @@ build-dir = "docs"
 
 [output.html]
 mathjax-support = true
+
+[output.html.playground]
+editable = true
+line-numbers = true

@@ -100,7 +100,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="00_intro.html">Intro</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/familiar_with_env.html"><strong aria-hidden="true">1.</strong> Get familiar with the environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="01_familiar_with_env/01_gentoo-amd64.html"><strong aria-hidden="true">1.1.</strong> Gentoo on AMD64</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/02_gentoo_usage.html"><strong aria-hidden="true">1.2.</strong> Gentoo Usage</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Answers</li><li class="chapter-item expanded "><a href="01_familiar_with_env/02_answers.html"><strong aria-hidden="true">2.</strong> Gentoo Usage</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="00_intro.html">Intro</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/familiar_with_env.html"><strong aria-hidden="true">1.</strong> Get familiar with the environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="01_familiar_with_env/01_gentoo-amd64.html"><strong aria-hidden="true">1.1.</strong> Gentoo on AMD64</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/02_gentoo_usage.html"><strong aria-hidden="true">1.2.</strong> Gentoo Usage</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Answers</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="01_familiar_with_env/02_answers.html"><strong aria-hidden="true">2.1.</strong> Gentoo Usage</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -171,9 +171,10 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="intro"><a class="header" href="#intro">Intro</a></h1>
-<p>本文档记录了我在<a href="https://github.com/lazyparser/weloveinterns">PCLT 实验室</a>做实习生，处理Gentoo和RISC-V的历程。里面有一些使用经验和提示，或许对快速上手gentoo有帮助吧。</p>
-<h2 id="仅是个人记录的文档有错误敬请指出"><a class="header" href="#仅是个人记录的文档有错误敬请指出">仅是个人记录的文档，有错误敬请指出</a></h2>
-<p>感谢我的mentor @dlan17的指导</p>
+<p>本文档记录了我在<a href="https://github.com/lazyparser/weloveinterns">PCLT 实验室</a>做实习生，处理Gentoo和RISC-V的历程。里面有一些使用经验和提示。</p>
+<p>仅是个人记录的文档，有错误敬请指出</p>
+<hr />
+<p>感谢我的mentor <a href="https://github.com/dlan17">@dlan17</a>的指导</p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="get-familiar-with-the-environment"><a class="header" href="#get-familiar-with-the-environment">Get familiar with the environment</a></h1>
 <p>本章目的是准备好amd64和qemu-risc-v上的gentoo，熟悉环境并比较他们的差异</p>
 <h2 id="获取信息的途径"><a class="header" href="#获取信息的途径">获取信息的途径</a></h2>
@@ -183,8 +184,8 @@
 <li>mailing list: #gentoo-dev, #gentoo-user， 可以设置filtering或者自动规则把这些邮件导入到一个邮箱文件夹里，避免收件箱爆炸，或者高级的试试iftt</li>
 <li>telgram group: gentoo-zh(活跃), Mainline Linux for D1 (不是gentoo的, RISC-V D1 板子的mainline linux频道)</li>
 </ul>
-<p><a href="01_familiar_with_env/01_familiar_with_env/01_gentoo-amd64.html">Gentoo on AMD 64</a>
-<a href="01_familiar_with_env/01_familiar_with_env/02_gentoo_usage.html">Gentoo Usage</a></p>
+<p><a href="01_familiar_with_env/01_gentoo-amd64.html">Gentoo on AMD 64</a></p>
+<p><a href="01_familiar_with_env/02_gentoo_usage.html">Gentoo Usage</a></p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="熟悉gentoo环境"><a class="header" href="#熟悉gentoo环境">熟悉Gentoo环境</a></h1>
 <h2 id="gentoo-amd64在virtualbox上的安装"><a class="header" href="#gentoo-amd64在virtualbox上的安装">Gentoo AMD64在VirtualBox上的安装</a></h2>
 <p>因为<a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage">官方文档handbook</a>会更新和变化并且有中文翻译，所以本文档不具体讨论安装流程，只在这里补充一些细节和遇到的问题。</p>
@@ -230,7 +231,7 @@
 <li>bash-completion, gentoo-bashcomp, tldr， 自动补全和太长不读提示，让生活更美好</li>
 <li>porthole： portage的一个gui前端</li>
 <li>layman：管理overlay仓库的</li>
-<li>查找其他的overlay，<a href="http://gpo.zugaina.org/Overlays"></a> <a href="https://overlays.gentoo.org/"></a></li>
+<li>查找其他的overlay，<a href="http://gpo.zugaina.org/Overlays">gpo.zugaina.org/Overlays</a> <a href="https://overlays.gentoo.org/">overlays.gentoo.org/</a></li>
 </ul>
 <h2 id="探索实践问题"><a class="header" href="#探索实践问题">探索实践问题</a></h2>
 <p>最后留一些问题方便自学探索熟悉gentoo，感谢mentor提供，我自己的回答放在文档最后对应章节。</p>
@@ -268,14 +269,14 @@
 </li>
 <li>overlay是什么
 <ul>
-<li>指的是ebuild的软件仓库</li>
+<li>大致就是指的ebuild软件仓库</li>
 </ul>
 </li>
 <li>怎么配置和管理服务，启用禁用，runlevel？openRC和systemd是什么？
 <ul>
 <li><a href="https://wiki.gentoo.org/wiki/Gentoo_Cheat_Sheet#OpenRC">openrc &amp; systemd</a></li>
 <li>如今日常发行版基本默认都用的systemd，Gentoo、默认的openRC</li>
-<li><a href="https://wiki.gentoo.org/wiki/Comparison_of_init_systems"></a></li>
+<li><a href="https://wiki.gentoo.org/wiki/Comparison_of_init_systems">各种init系统的比较</a></li>
 </ul>
 </li>
 <li>谁是willikins？
@@ -311,6 +312,10 @@
         
 
         
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+        
 
         
         <script type="text/javascript">
@@ -318,6 +323,12 @@
         </script>
         
 
+        
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
         
 
         

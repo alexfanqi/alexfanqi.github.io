@@ -8,6 +8,7 @@
 * mailing list: #gentoo-dev, #gentoo-user， 可以设置filtering或者自动规则把这些邮件导入到一个邮箱文件夹里，避免收件箱爆炸，或者高级的试试iftt
 * telgram group: gentoo-zh(活跃), Mainline Linux for D1 (不是gentoo的, RISC-V D1 板子的mainline linux频道)
 
-[Gentoo on AMD 64](01_familiar_with_env/01_gentoo-amd64.md)
-[Gentoo Usage](01_familiar_with_env/02_gentoo_usage.md)
+[Gentoo on AMD 64](01_gentoo-amd64.md)
+
+[Gentoo Usage](02_gentoo_usage.md)
 
