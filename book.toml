@@ -1,0 +1,9 @@
+[book]
+authors = ["Alex Fan"]
+language = "zh_CN"
+multilingual = true
+src = "src"
+title = "Road to Gentoo on RISC-V"
+
+[output.html]
+mathjax-support = true
