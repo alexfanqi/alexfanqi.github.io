@@ -33,7 +33,7 @@ Gentoo需要使用`eselect profile`选择profile，建议选择最精简的那�
 > (net-wireless/bluez-5.55:0/3::gentoo, ebuild scheduled for merge) (buildtime)
 > (dev-libs/libical-3.0.8:0/3::gentoo, ebuild scheduled for merge) (buildtime_slot_op) 
 
-我的报错和最个不太一样，但是样子差不多。解决方法一般就是修改USE FLAG去掉其中一个包对另外一个包的支援，先编译一个出来。之后再把USE FLAG改回去，把那个支持给加上，重新编译就成了。 参考[Circular problem on fresh install](https://forums.gentoo.org/viewtopic-t-1128355-start-0.html)
+我的报错和最个不太一样，但是样子差不多。解决方法一般就是修改USE FLAG去掉其中一个包对另外一个包的支援，先编译一个出来。之后再把USE FLAG改回去，把那个支持给加上，重新编译就成了。 参考[Circular problem on fresh install](https://forums.gentoo.org/viewtopic-t-1128355-start-0.html)，[不同循环依赖的类型](https://devmanual.gentoo.org/general-concepts/dependencies/index.html#circular-dependencies)
 
 3. 64位的cpu手动编译内核提示不支持选64位指令拒绝编译 
 

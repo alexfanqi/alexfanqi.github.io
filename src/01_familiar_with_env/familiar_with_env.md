@@ -4,7 +4,7 @@
 
 ## 获取信息的途径
 有很多沟通渠道，官网都有列。
-* irc: 我加了#gentoo， #gentoo-dev, #gentoo-dev-help, #gentoo-riscv, #gentoo-bugs, #gentoo-commits。懒人如我的可以试试[irccloud](https://www.irccloud.com/)，付费但是可以把irc挂他们服务器上一直跑。
+* irc: 我加了#gentoo， #gentoo-dev, #gentoo-dev-help, #gentoo-riscv, #gentoo-bugs, #gentoo-commits。懒人如我的可以试试[irccloud](https://www.irccloud.com/)，付费但是可以把irc挂他们服务器上一直跑。另外irssi有个hilight插件挺好使的，可以关注特定 关键词/用户
 * mailing list: #gentoo-dev, #gentoo-user， 可以设置filtering或者自动规则把这些邮件导入到一个邮箱文件夹里，避免收件箱爆炸，或者高级的试试iftt
 * telgram group: gentoo-zh(活跃), Mainline Linux for D1 (不是gentoo的, RISC-V D1 板子的mainline linux频道)
 

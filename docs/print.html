@@ -180,7 +180,7 @@
 <h2 id="获取信息的途径"><a class="header" href="#获取信息的途径">获取信息的途径</a></h2>
 <p>有很多沟通渠道，官网都有列。</p>
 <ul>
-<li>irc: 我加了#gentoo， #gentoo-dev, #gentoo-dev-help, #gentoo-riscv, #gentoo-bugs, #gentoo-commits。懒人如我的可以试试<a href="https://www.irccloud.com/">irccloud</a>，付费但是可以把irc挂他们服务器上一直跑。</li>
+<li>irc: 我加了#gentoo， #gentoo-dev, #gentoo-dev-help, #gentoo-riscv, #gentoo-bugs, #gentoo-commits。懒人如我的可以试试<a href="https://www.irccloud.com/">irccloud</a>，付费但是可以把irc挂他们服务器上一直跑。另外irssi有个hilight插件挺好使的，可以关注特定 关键词/用户</li>
 <li>mailing list: #gentoo-dev, #gentoo-user， 可以设置filtering或者自动规则把这些邮件导入到一个邮箱文件夹里，避免收件箱爆炸，或者高级的试试iftt</li>
 <li>telgram group: gentoo-zh(活跃), Mainline Linux for D1 (不是gentoo的, RISC-V D1 板子的mainline linux频道)</li>
 </ul>
@@ -217,7 +217,7 @@
 (net-wireless/bluez-5.55:0/3::gentoo, ebuild scheduled for merge) (buildtime)
 (dev-libs/libical-3.0.8:0/3::gentoo, ebuild scheduled for merge) (buildtime_slot_op) </p>
 </blockquote>
-<p>我的报错和最个不太一样，但是样子差不多。解决方法一般就是修改USE FLAG去掉其中一个包对另外一个包的支援，先编译一个出来。之后再把USE FLAG改回去，把那个支持给加上，重新编译就成了。 参考<a href="https://forums.gentoo.org/viewtopic-t-1128355-start-0.html">Circular problem on fresh install</a></p>
+<p>我的报错和最个不太一样，但是样子差不多。解决方法一般就是修改USE FLAG去掉其中一个包对另外一个包的支援，先编译一个出来。之后再把USE FLAG改回去，把那个支持给加上，重新编译就成了。 参考<a href="https://forums.gentoo.org/viewtopic-t-1128355-start-0.html">Circular problem on fresh install</a>，<a href="https://devmanual.gentoo.org/general-concepts/dependencies/index.html#circular-dependencies">不同循环依赖的类型</a></p>
 <ol start="3">
 <li>64位的cpu手动编译内核提示不支持选64位指令拒绝编译 </li>
 </ol>
@@ -227,15 +227,21 @@
 </blockquote>
 <p>注意到虽然后面有<code>x86_64</code>，但是前面的<code>default/linux/x86</code>就说明了是32位的了，正确的应该是<code>default/linux/amd64</code>。</p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="gentoo使用"><a class="header" href="#gentoo使用">Gentoo使用</a></h1>
-<p>emerge是e-merge，emaint是e-maintanence</p>
-<h3 id="一些有用的提示"><a class="header" href="#一些有用的提示">一些有用的提示</a></h3>
+<h2 id="big-picture"><a class="header" href="#big-picture">Big Picture</a></h2>
+<p>Gentoo和arch差不多都是从仓库取得源代码，然后在用户机子上编译，然后安装的。gentood的包管理系统是portage，对应的cli命令是emerge，就像arch的pacman。所谓e-merge就像是git merge，把repo仓库的代码给merge到用户机子上，当然作为包管理器emerge也有其他功能。除了portage当然也有其他的包管理器。每个包都有一个ebuild文本文件来记录包的相关信息，gentoo的repo就是一堆ebuild文本文件和某些其他信息的集合，也叫overlay。要管理这些包就要一些flag，包括keyword，use flag和各种<a href="https://devmanual.gentoo.org/ebuild-writing/variables/">variable</a>等，gentoo的包管理大体也就基于这些flag。</p>
+<p>刚使用emerge可能很迷，与apt和dnf会有些不同。首先，@world登记了系统中明确要保留的程序，包括用户安装的包和系统的@profile及gentoo必需的@system。删除一个包要先deselect，把包移除@world，声明我不需要这个包了系统没必要为我保留了，但包还没被删除（还可以--select给加回来），之后某天可以统一depclean计算各种依赖，如果没有别的软件依赖它，就一并完全删除。这个@world机制就motivate了--oneshot存在的意义。</p>
+<p><em><strong>oneshot的use case</strong></em>: --oneshot就是安装这个包但不加入@world里。典型的use case是，你只想重新编译一下某个包，但不确定这个包是不是其他包的依赖，也不确定这个包是否加入到@world里了。想象一下如果此时不用oneshot，这个包就会自动加入@world里，如果这个包之前不在@world里而只是某个软件的依赖，那它就会被声明为系统明确要保留，即使依赖它的软件被卸载了，它也不会被depclean给删掉，过个几天你也忘了这事了，于是一个不需要的包以及它自己的依赖就可能永远被留在系统里了。。。。</p>
+<p>理解了这些感觉就好了，openrc和systemd 服务管理各个系统大同小异。</p>
+<h2 id="一些有用的提示"><a class="header" href="#一些有用的提示">一些有用的提示</a></h2>
 <p><a href="https://wiki.gentoo.org/wiki/Gentoo_Cheat_Sheet#Overlays">cheatsheat</a></p>
 <ul>
-<li>equery, eix，euse</li>
+<li>equery, eix，euse，eselect，emaint，portageq</li>
 <li>bash-completion, gentoo-bashcomp, tldr， 自动补全和太长不读提示，让生活更美好</li>
 <li>porthole： portage的一个gui前端</li>
-<li>layman：管理overlay仓库的</li>
+<li>layman：管理不同overlay仓库的</li>
 <li>查找其他的overlay，<a href="http://gpo.zugaina.org/Overlays">gpo.zugaina.org/Overlays</a> <a href="https://overlays.gentoo.org/">overlays.gentoo.org/</a></li>
+<li>ccache: 大概是可以cache编译过的obj，之后直接拿来用，节省时间</li>
+<li>完成后提醒：emerge 有一个-A选项，可以在命令完成后“滴”响下铃提醒你，这样就不用坐在那里盯着了。更复杂的提醒可以通过配置portage的log直接发email，这个还是在irc上学到的，我还没试过不过应该可行，参考 <a href="https://wiki.gentoo.org/wiki/Portage_log#Configuring_for_e-mail">https://wiki.gentoo.org/wiki/Portage_log#Configuring_for_e-mail</a></li>
 </ul>
 <h2 id="探索实践问题"><a class="header" href="#探索实践问题">探索实践问题</a></h2>
 <p>最后留一些问题方便自学探索熟悉gentoo，感谢mentor提供，我自己的回答放在文档最后对应章节。</p>
@@ -252,7 +258,7 @@
 <li>Keyword,USE,FEATURES, /etc/portage/make.conf都是什么。EAPI和GLEP是什么的缩写，是干什么的？
 <ul>
 <li>Keyword 是每个文件包对各个架构的支持情况 稳定？测试中？ known to broken?</li>
-<li>USE就是标记软件包特性支持和依赖的flag,每个软件包可以在/etc/portage/packege.use改，优先级比make.conf高</li>
+<li>USE就是标记用户可选软件包特性支持和依赖的flag。每个软件包可以在/etc/portage/packege.use改，优先级比make.conf高</li>
 <li>make.conf是用来设置portage的全局环境的，比如USE，编译选项，CPU_FLAGS等等等等</li>
 <li>FEATURES是portage的一些不会那么影响编译出的软件包的配置</li>
 <li><a href="https://devmanual.gentoo.org/ebuild-writing/eapi/">EAPI</a> 大概就是包管理器标准的版本号</li>
@@ -285,7 +291,7 @@
 </li>
 <li>谁是willikins？
 <ul>
-<li><a href="https://wiki.gentoo.org/wiki/Willikins">willikins</a> 是gentoo irc上的bot</li>
+<li><a href="https://wiki.gentoo.org/wiki/Willikins">willikins</a> 是gentoo irc上的bot，通知commit消息，还可以给别人留note消息</li>
 </ul>
 </li>
 </ol>
