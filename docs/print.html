@@ -100,7 +100,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="00_intro.html">Intro</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/familiar_with_env.html"><strong aria-hidden="true">1.</strong> Get familiar with the environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="01_familiar_with_env/01_gentoo-amd64.html"><strong aria-hidden="true">1.1.</strong> Gentoo on AMD64</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/02_gentoo_usage.html"><strong aria-hidden="true">1.2.</strong> Gentoo Usage</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Answers</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="01_familiar_with_env/02_answers.html"><strong aria-hidden="true">2.1.</strong> Gentoo Usage</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="00_intro.html">Intro</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/familiar_with_env.html"><strong aria-hidden="true">1.</strong> Get familiar with the environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="01_familiar_with_env/01_gentoo-amd64.html"><strong aria-hidden="true">1.1.</strong> Gentoo on AMD64</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/02_gentoo_usage.html"><strong aria-hidden="true">1.2.</strong> Gentoo Usage</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/03_qemu-riscv.html"><strong aria-hidden="true">1.3.</strong> Riscv64 on Qemu</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/misc.html"><strong aria-hidden="true">1.4.</strong> misc</a></li></ol></li><li class="chapter-item expanded "><a href="02_gentoo-dev/gentoo-dev.html"><strong aria-hidden="true">2.</strong> gentoo-dev random notes</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> meeting notes with mentor</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="meeting_notes/notes_01.html"><strong aria-hidden="true">3.1.</strong> week01</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Answers</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="01_familiar_with_env/02_answers.html"><strong aria-hidden="true">4.1.</strong> Gentoo Usage</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -189,10 +189,10 @@
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="gentoo-amd64在virtualbox上的安装"><a class="header" href="#gentoo-amd64在virtualbox上的安装">Gentoo AMD64在VirtualBox上的安装</a></h1>
 <p>因为<a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage">官方文档handbook</a>会更新和变化并且有中文翻译，所以本文档不具体讨论安装流程，只在这里补充一些细节和遇到的问题。</p>
 <hr />
-<p><strong>注意！！</strong> Gentoo的安装需要下载livecd和stage3两个包，<em><strong>一定要看清楚架构！！！</strong></em> 否则就会出现<a href="01_familiar_with_env/01_gentoo-amd64.html#%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98">我碰到的第三个问题</a>。gentoo的keyword x86指的是32位的，对应livecd和stage3安装包标记是*-i686-*；amd64才是如今基本普及了的64位架构（因为是amd主导的标准嘛，intel的IA64凉了），对应的标记是*-amd64-*。<strong>中途没报错不代表选对了包和参数！！！</strong> ，因为64位架构amd64能够兼容旧的架构32位的x86,你可能不经意间在你的64位机子上安了32位的系统，直到某天碰到某个软件不支持32位才发现，毕竟32位的x86芯片慢慢要被淘汰了。目前来看<strong>从32位改成64位只能重装Gentoo</strong>，<a href="https://wiki.gentoo.org/wiki/AMD64/FAQ#Can_I_upgrade_from_my_x86_system_to_AMD64_by_doing_emerge_-e_.40world.3F">参考</a>。</p>
+<p><strong>注意！！</strong> Gentoo的安装需要下载livecd和stage3两个包，<em><strong>一定要看清楚架构！！！</strong></em> 否则就会出现<a href="01_familiar_with_env/01_gentoo-amd64.html#%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98">我碰到的第三个问题</a>。gentoo的keyword x86指的是32位的，对应livecd和stage3安装包标记是*-i686-*；amd64才是如今基本普及了的64位架构（因为是amd主导的标准嘛，intel的IA64凉了），对应的标记是*-amd64-*。<strong>中途没报错不代表选对了包和参数！！！</strong> ，因为64位架构amd64能够兼容旧的架构32位的x86,你可能不经意间在你的64位机子上安了32位的系统，直到某天碰到某个软件不支持32位才发现，毕竟32位的x86芯片慢慢要被淘汰了。目前来看<strong>从32位改成64位只能重装Gentoo</strong>，参考<a href="https://wiki.gentoo.org/wiki/AMD64/FAQ#Can_I_upgrade_from_my_x86_system_to_AMD64_by_doing_emerge_-e_.40world.3F">https://wiki.gentoo.org/wiki/AMD64/FAQ#Can_I_upgrade_from_my_x86_system_to_AMD64_by_doing_emerge_-e_.40world.3F</a>。</p>
 <hr />
 <p>还有gentoo默认使用的是openrc管理之前的systemv的init。目前用户量比较多的发行版比如ubuntu fedora opensuse都默认的是systemd。我还是选的默认openrc。<strong>一定注意安装包的标记</strong>，带systemd是systemd的，不带是openrc的。之后选profile的时候也要保持一致。安装完成之后还是可以切换openrc和systemd。</p>
-<p>先说明我的配置，VirtualBox上分了50GB，2个分区,一个2GB给swap，剩下的都给另一个分区刷成btrfs。然后在第二个分区可以用btrfs建立subvolume，我使用了平铺布局，在顶层目录直接建了 @root, @home, @var, 挂载的时候使用参数-o subvol=@root 挂在对应目录就好了，之后gentoo全部安装好之后再搭配<a href="https://wiki.gentoo.org/wiki/Snapper">snapper</a>就能方便地给分区进行快照和备份了。</p>
+<p>先说明我的配置，VirtualBox上分了50GB，2个分区,一个2GB给swap，剩下的都给另一个分区刷成btrfs。然后在第二个分区可以用btrfs建立subvolume，我使用了平铺布局，在顶层目录直接建了 @root, @home, @var, 挂载的时候使用参数-o subvol=@root 挂在对应目录就好了，之后gentoo全部安装好之后再搭配<a href="https://wiki.gentoo.org/wiki/Snapper">snapper</a>就能方便地给分区进行快照和备份了。另外，btrfs可以在线状态更改分区大小，也可以用fdisk删掉原分区，再在相同起始地址创建个新分区，然后partprobe，最后<code>btrfs filesystem resize</code>。非常灵活，刚开始分区分错了也没关系。</p>
 <p>因为Vbox虚拟机默认是BIOS模式，所以干脆用MBR格式的分区表，这里官方文档讲不需要/boot分区，可是唯一的可引导分区刷成了btrfs，开始还有点害怕grub2不支持btrfs想着要多划分一个ext格式的/boot，结果完全没问题，确实不需要独立划分/boot分区。</p>
 <p>之所以不在实体机上直接安装gentoo是因为VirtualBox的快照功能，可以随时暂停拍个快照，之后直接恢复快照就能立刻继续工作，非常方便，不用重新吟唱咒语了。</p>
 <p>cli安装Linux发行版流程基本都是先在某个现成的linux环境上把目标系统的文件和硬盘分区准备好，然后把proc下初始化好的硬件信息给mount到目标系统对应/proc下，然后chroot进目标系统，准备好内核再配置好字符集和时区等信息，最后安装grub等引导程序就完成了。Gentoo基本也是这个流程。注意有时候chroot之后会出现”无法找到某文件“但ls一下文件确实存在的情况，很有可能是这个文件是个软链接接并且指向的是chroot之外的文件系统。</p>
@@ -217,7 +217,7 @@
 (net-wireless/bluez-5.55:0/3::gentoo, ebuild scheduled for merge) (buildtime)
 (dev-libs/libical-3.0.8:0/3::gentoo, ebuild scheduled for merge) (buildtime_slot_op) </p>
 </blockquote>
-<p>我的报错和最个不太一样，但是样子差不多。解决方法一般就是修改USE FLAG去掉其中一个包对另外一个包的支援，先编译一个出来。之后再把USE FLAG改回去，把那个支持给加上，重新编译就成了。 参考<a href="https://forums.gentoo.org/viewtopic-t-1128355-start-0.html">Circular problem on fresh install</a>，<a href="https://devmanual.gentoo.org/general-concepts/dependencies/index.html#circular-dependencies">不同循环依赖的类型</a></p>
+<p>我的报错和这个不太一样，但是样子差不多。解决方法一般就是修改USE FLAG去掉其中一个包对另外一个包的支援，先编译一个出来。之后再把USE FLAG改回去，把那个支持给加上，重新编译就成了。 参考<a href="https://forums.gentoo.org/viewtopic-t-1128355-start-0.html">Circular problem on fresh install</a>，<a href="https://devmanual.gentoo.org/general-concepts/dependencies/index.html#circular-dependencies">不同循环依赖的类型</a></p>
 <ol start="3">
 <li>64位的cpu手动编译内核提示不支持选64位指令拒绝编译 </li>
 </ol>
@@ -226,11 +226,20 @@
 <p>Portage 2.1.11.55 (default/linux/x86/13.0, gcc-4.6.3, glibc-2.15-r3, 3.4.42-std3 51-amd64 x86_64</p>
 </blockquote>
 <p>注意到虽然后面有<code>x86_64</code>，但是前面的<code>default/linux/x86</code>就说明了是32位的了，正确的应该是<code>default/linux/amd64</code>。</p>
+<h1 id="gentoo-amd64在实体机上的安装"><a class="header" href="#gentoo-amd64在实体机上的安装">Gentoo AMD64在实体机上的安装</a></h1>
+<p>在实体机上安Gentoo的话，与vbox其实大同小异。如果已经装有linux了，就不需要用livecd，可以分好区，解压stage3,直接chroot进去,没有权限的可以试试fakeroot，注意要用/usr/bin/env -i 消除外部的变量，与外部的linux完全隔离，同时要设置好$HOME和$TERM。更懒的甚至可以不用装grub，每次进入linux后chroot进gentoo，这样gentoo内部不用再编译原来的linux已经有的各种工具比如x11，也有个部分可用的gentoo环境。甚至进一步还可以像brew那样，参考<a href="https://wiki.gentoo.org/wiki/Project:Prefix">https://wiki.gentoo.org/wiki/Project:Prefix</a> 。</p>
+<p>如果还是要进入gentoo系统，原本的linux一般已经有grub，就不用安grub了，直接update grub.cfg就行。我原本的linux是Ubuntu，update-grub不能很好地自动配置btrfs subvolume上的kernel，尤其是根目录在一个subvolume上比如./@root（当然可以起别的名字，这里只是例子）而不是./ (注意这里的相对路径相对的是btrfs分区)。</p>
+<ul>
+<li>第一个问题是update-grub可能自动识别不到gentoo系统，这需要先把根目录的subvolume ./@root挂载到./，才能识别。</li>
+<li>第二个问题是重启后grub search root会直接把分区./当作root，不会自动挂载你根目录的subvolume @root，导致它找不到boot下面的内核和initramfs，解决方法是加个软链接，把./@root/boot给链接到./boot。</li>
+<li>最后一个问题是，成功启动了gentoo的内核也加载了initramfs，但gentoo的内核还是不知道root其实是在subvolume @root，fstab不会起作用因为fstab也在@root上，解决方法是给gentoo内核加启动参数，rootflags=subvol=@root，注意下次update-grub可能把这个给覆盖掉,建议放在update-grub或者grub-mkconfig的配置里。</li>
+</ul>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="gentoo使用"><a class="header" href="#gentoo使用">Gentoo使用</a></h1>
 <h2 id="big-picture"><a class="header" href="#big-picture">Big Picture</a></h2>
 <p>Gentoo和arch差不多都是从仓库取得源代码，然后在用户机子上编译，然后安装的。gentood的包管理系统是portage，对应的cli命令是emerge，就像arch的pacman。所谓e-merge就像是git merge，把repo仓库的代码给merge到用户机子上，当然作为包管理器emerge也有其他功能。除了portage当然也有其他的包管理器。每个包都有一个ebuild文本文件来记录包的相关信息，gentoo的repo就是一堆ebuild文本文件和某些其他信息的集合，也叫overlay。要管理这些包就要一些flag，包括keyword，use flag和各种<a href="https://devmanual.gentoo.org/ebuild-writing/variables/">variable</a>等，gentoo的包管理大体也就基于这些flag。</p>
 <p>刚使用emerge可能很迷，与apt和dnf会有些不同。首先，@world登记了系统中明确要保留的程序，包括用户安装的包和系统的@profile及gentoo必需的@system。删除一个包要先deselect，把包移除@world，声明我不需要这个包了系统没必要为我保留了，但包还没被删除（还可以--select给加回来），之后某天可以统一depclean计算各种依赖，如果没有别的软件依赖它，就一并完全删除。这个@world机制就motivate了--oneshot存在的意义。</p>
 <p><em><strong>oneshot的use case</strong></em>: --oneshot就是安装这个包但不加入@world里。典型的use case是，你只想重新编译一下某个包，但不确定这个包是不是其他包的依赖，也不确定这个包是否加入到@world里了。想象一下如果此时不用oneshot，这个包就会自动加入@world里，如果这个包之前不在@world里而只是某个软件的依赖，那它就会被声明为系统明确要保留，即使依赖它的软件被卸载了，它也不会被depclean给删掉，过个几天你也忘了这事了，于是一个不需要的包以及它自己的依赖就可能永远被留在系统里了。。。。</p>
+<p>另外，portage安装软件会先进入一个临时目录/tmp/portage/category/package下进行编译安装，包括应用一些用户patch，然后再应用到用户系统。portage对某些文件有修改保护，比如/etc，安装包修改时会创建一个cfg_num原文件名副本，之后用户可以手动或者用etc-update自动替换，这样也就不用担心装软件中途停止搞乱系统了。</p>
 <p>理解了这些感觉就好了，openrc和systemd 服务管理各个系统大同小异。</p>
 <h2 id="一些有用的提示"><a class="header" href="#一些有用的提示">一些有用的提示</a></h2>
 <p><a href="https://wiki.gentoo.org/wiki/Gentoo_Cheat_Sheet#Overlays">cheatsheat</a></p>
@@ -238,10 +247,12 @@
 <li>equery, eix，euse，eselect，emaint，portageq</li>
 <li>bash-completion, gentoo-bashcomp, tldr， 自动补全和太长不读提示，让生活更美好</li>
 <li>porthole： portage的一个gui前端</li>
-<li>layman：管理不同overlay仓库的</li>
-<li>查找其他的overlay，<a href="http://gpo.zugaina.org/Overlays">gpo.zugaina.org/Overlays</a> <a href="https://overlays.gentoo.org/">overlays.gentoo.org/</a></li>
+<li>layman vs eselect repository：管理不同overlay仓库的</li>
+<li>查找更多overlay (repo)，<a href="https://overlays.gentoo.org/">https://overlays.gentoo.org/</a>,<a href="http://gpo.zugaina.org/Overlays">http://gpo.zugaina.org/Overlays</a></li>
 <li>ccache: 大概是可以cache编译过的obj，之后直接拿来用，节省时间</li>
 <li>完成后提醒：emerge 有一个-A选项，可以在命令完成后“滴”响下铃提醒你，这样就不用坐在那里盯着了。更复杂的提醒可以通过配置portage的log直接发email，这个还是在irc上学到的，我还没试过不过应该可行，参考 <a href="https://wiki.gentoo.org/wiki/Portage_log#Configuring_for_e-mail">https://wiki.gentoo.org/wiki/Portage_log#Configuring_for_e-mail</a></li>
+<li>genlop: 估计编译时间</li>
+<li>把编译目录通过tmpfs放到ram上: <a href="https://wiki.gentoo.org/wiki/Portage_TMPDIR_on_tmpfs">https://wiki.gentoo.org/wiki/Portage_TMPDIR_on_tmpfs</a></li>
 </ul>
 <h2 id="探索实践问题"><a class="header" href="#探索实践问题">探索实践问题</a></h2>
 <p>最后留一些问题方便自学探索熟悉gentoo，感谢mentor提供，我自己的回答放在文档最后对应章节。</p>
@@ -253,6 +264,79 @@
 <li>怎么配置和管理服务，启用禁用，runlevel？openRC和systemd是什么？</li>
 <li>谁是willikins？</li>
 </ol>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h2 id="交叉编译"><a class="header" href="#交叉编译">交叉编译</a></h2>
+<p>首先就是要获得交叉编译器，gentoo可以直接用crossdev，先创建一个本地overlay，然后crossdev会帮你收拾一切，也可以参考crossdev的脚本写个自己的wrapper处理环境变量。参考<a href="https://wiki.gentoo.org/wiki/Embedded_Handbook/General/Creating_a_cross-compiler">https://wiki.gentoo.org/wiki/Embedded_Handbook/General/Creating_a_cross-compiler</a></p>
+<p>懒得自己编译的话，也可以直接去<a href="https://toolchains.bootlin.com/releases_riscv64.html">crossdev</a>下载编译好的工具包。</p>
+<p>gentoo上编译内核直接使用genkernel就行，注意加入virtio支持，才能正常使用qemu。有个依赖需要perl，但perl支持riscv的multilib的ebuild似乎还有问题，需要打一个补丁，参考<a href="https://bugs.gentoo.org/794463">https://bugs.gentoo.org/794463</a></p>
+<p>接下来gentoo上qemu配置可以参考<a href="https://wiki.gentoo.org/wiki/QEMU/Linux_guest">https://wiki.gentoo.org/wiki/QEMU/Linux_guest</a> 和 <a href="https://wiki.gentoo.org/wiki/QEMU">https://wiki.gentoo.org/wiki/QEMU</a>，主要就是QEMU_USER_TARGETS和QEMU_SOFTMMU_TARGETS两个变量。</p>
+<h2 id="qemu"><a class="header" href="#qemu">qemu</a></h2>
+<p>gentoo的qemu自己安装了riscv的sbi。如果qemu没有带sbi的话（qemu会报错没有bios），可以去自己编译然后使用<code>-bios</code>指定。使用<a href="https://lib.rs/crates/rustsbi">https://lib.rs/crates/rustsbi</a> 或者<a href="https://github.com/riscv/opensbi">https://github.com/riscv/opensbi</a>或者 u-boot都行,关于sbi还是参考标准文档 <a href="https://github.com/riscv/riscv-sbi-doc">https://github.com/riscv/riscv-sbi-doc</a>，大致理解成固件就行了。</p>
+<p>ubuntu的包仓库里qemu riscv编译的似乎有问题，硬件时钟rtc没法用，kernel config的rtc默认是打开的并且在/proc/config.gz中也确认过内置包含了，可是/dev/下压根没有rtc文件，时间总是1970哈哈哈哈，用gentoo的qemu就没有问题，过几天去提bug问问。</p>
+<p>另外也可以使用virish和virt-manager来管理qemu的虚拟机。</p>
+<h2 id="stage3"><a class="header" href="#stage3">stage3</a></h2>
+<p>应该直接用dlan的stage4包的，花费了挺多时间在补全dilfridge的stage3包。结果发现<a href="https://wiki.gentoo.org/wiki/Raspberry_Pi">raspberry pi的gentoo wiki</a>包括了大部分遇到的问题。。。算是learn it the hard way了。</p>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><p>arch tester, 之前会用app-portage/tatt做测试 </p>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><ul>
+<li>
+<p>EUSE很杂，不过官网有些不错的参考，<a href="https://packages.gentoo.org/useflags">https://packages.gentoo.org/useflags</a></p>
+</li>
+<li>
+<p>slot和subslot，可以允许多个版本共存</p>
+</li>
+<li>
+<p>sandbox机制，主要是保护文件系统，防止写的有毛病的ebuild不小心修改了它不应该修改的文件</p>
+</li>
+<li>
+<p>中途失败的话可以去/var/tmp/portage/下面查看log和编译文件</p>
+</li>
+<li>
+<p>管理仓库的时候，profile下没有 package.unmask，只能在package.mask里加-package，管理系统的时候在/etc/portage/下则可以用package.unmask，优先级比仓库中的mask高，所以可以取消mask</p>
+</li>
+<li>
+<p>accepted-keyword和arch use flag是不同的东西</p>
+</li>
+<li>
+<p>eclasses, optfeatures?</p>
+</li>
+<li>
+<p><a href="https://devmanual.gentoo.org/ebuild-writing/variables/">https://devmanual.gentoo.org/ebuild-writing/variables/</a></p>
+</li>
+</ul>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><p>repoman
+pkgcore pkgcheck</p>
+<p>keyword networkmanager or mask
+all use flags have to be tested
+arch tester
+auto test combination of use, -&gt; only test two-three
+dependency
+package.use.unmask??
+use.mask vs package.use.mask
+qa repos
+natt keyword stable</p>
+<p>tree stack test vs full-range test</p>
+<p>mistake:
+A-&gt;B, keyword A B, commit A, but forget B</p>
+<p>commit
+bug close</p>
+<p>infrastrcuture</p>
+<p>michael page use
+live ebuild -&gt; 9999 report upstream
+qlive -Icv
+package.accept_keyworld</p>
+<p>bug file
+filter bugs with user
+build.log &amp; emerge --info
+https://bugs.gentoo.org/794208</p>
+<p>snapper tmate
+stable request</p>
+<p>genkernel</p>
+<p>2-3 week env setup qemu keyword pull request bugs</p>
+<ol>
+<li>riscv kvm </li>
+<li>extract initramfs to check what is inside</li>
+<li>maintain snapper &amp; tmate</li>
+</ol>
+<p>https://wiki.gentoo.org/wiki/GitHub_Pull_Requests</p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><p>最后留一些问题方便自学探索熟悉gentoo，感谢mentor提供，我自己的回答放在文档最后对应章节。</p>
 <ol>
 <li>Keyword,USE,FEATURES, /etc/portage/make.conf都是什么。EAPI和GLEP是什么的缩写，是干什么的？

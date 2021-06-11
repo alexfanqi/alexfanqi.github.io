@@ -3,12 +3,12 @@
 因为[官方文档handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage)会更新和变化并且有中文翻译，所以本文档不具体讨论安装流程，只在这里补充一些细节和遇到的问题。
 
 _______
-**注意！！** Gentoo的安装需要下载livecd和stage3两个包，___一定要看清楚架构！！！___ 否则就会出现[我碰到的第三个问题](#碰到的问题)。gentoo的keyword x86指的是32位的，对应livecd和stage3安装包标记是\*-i686-\*；amd64才是如今基本普及了的64位架构（因为是amd主导的标准嘛，intel的IA64凉了），对应的标记是\*-amd64-\*。**中途没报错不代表选对了包和参数！！！** ，因为64位架构amd64能够兼容旧的架构32位的x86,你可能不经意间在你的64位机子上安了32位的系统，直到某天碰到某个软件不支持32位才发现，毕竟32位的x86芯片慢慢要被淘汰了。目前来看**从32位改成64位只能重装Gentoo**，[参考](https://wiki.gentoo.org/wiki/AMD64/FAQ#Can_I_upgrade_from_my_x86_system_to_AMD64_by_doing_emerge_-e_.40world.3F)。
+**注意！！** Gentoo的安装需要下载livecd和stage3两个包，___一定要看清楚架构！！！___ 否则就会出现[我碰到的第三个问题](#碰到的问题)。gentoo的keyword x86指的是32位的，对应livecd和stage3安装包标记是\*-i686-\*；amd64才是如今基本普及了的64位架构（因为是amd主导的标准嘛，intel的IA64凉了），对应的标记是\*-amd64-\*。**中途没报错不代表选对了包和参数！！！** ，因为64位架构amd64能够兼容旧的架构32位的x86,你可能不经意间在你的64位机子上安了32位的系统，直到某天碰到某个软件不支持32位才发现，毕竟32位的x86芯片慢慢要被淘汰了。目前来看**从32位改成64位只能重装Gentoo**，参考<https://wiki.gentoo.org/wiki/AMD64/FAQ#Can_I_upgrade_from_my_x86_system_to_AMD64_by_doing_emerge_-e_.40world.3F>。
 _______
 
 还有gentoo默认使用的是openrc管理之前的systemv的init。目前用户量比较多的发行版比如ubuntu fedora opensuse都默认的是systemd。我还是选的默认openrc。**一定注意安装包的标记**，带systemd是systemd的，不带是openrc的。之后选profile的时候也要保持一致。安装完成之后还是可以切换openrc和systemd。
 
-先说明我的配置，VirtualBox上分了50GB，2个分区,一个2GB给swap，剩下的都给另一个分区刷成btrfs。然后在第二个分区可以用btrfs建立subvolume，我使用了平铺布局，在顶层目录直接建了 @root, @home, @var, 挂载的时候使用参数-o subvol=@root 挂在对应目录就好了，之后gentoo全部安装好之后再搭配[snapper](https://wiki.gentoo.org/wiki/Snapper)就能方便地给分区进行快照和备份了。
+先说明我的配置，VirtualBox上分了50GB，2个分区,一个2GB给swap，剩下的都给另一个分区刷成btrfs。然后在第二个分区可以用btrfs建立subvolume，我使用了平铺布局，在顶层目录直接建了 @root, @home, @var, 挂载的时候使用参数-o subvol=@root 挂在对应目录就好了，之后gentoo全部安装好之后再搭配[snapper](https://wiki.gentoo.org/wiki/Snapper)就能方便地给分区进行快照和备份了。另外，btrfs可以在线状态更改分区大小，也可以用fdisk删掉原分区，再在相同起始地址创建个新分区，然后partprobe，最后`btrfs filesystem resize`。非常灵活，刚开始分区分错了也没关系。
 
 因为Vbox虚拟机默认是BIOS模式，所以干脆用MBR格式的分区表，这里官方文档讲不需要/boot分区，可是唯一的可引导分区刷成了btrfs，开始还有点害怕grub2不支持btrfs想着要多划分一个ext格式的/boot，结果完全没问题，确实不需要独立划分/boot分区。
 
@@ -33,7 +33,7 @@ Gentoo需要使用`eselect profile`选择profile，建议选择最精简的那�
 > (net-wireless/bluez-5.55:0/3::gentoo, ebuild scheduled for merge) (buildtime)
 > (dev-libs/libical-3.0.8:0/3::gentoo, ebuild scheduled for merge) (buildtime_slot_op) 
 
-我的报错和最个不太一样，但是样子差不多。解决方法一般就是修改USE FLAG去掉其中一个包对另外一个包的支援，先编译一个出来。之后再把USE FLAG改回去，把那个支持给加上，重新编译就成了。 参考[Circular problem on fresh install](https://forums.gentoo.org/viewtopic-t-1128355-start-0.html)，[不同循环依赖的类型](https://devmanual.gentoo.org/general-concepts/dependencies/index.html#circular-dependencies)
+我的报错和这个不太一样，但是样子差不多。解决方法一般就是修改USE FLAG去掉其中一个包对另外一个包的支援，先编译一个出来。之后再把USE FLAG改回去，把那个支持给加上，重新编译就成了。 参考[Circular problem on fresh install](https://forums.gentoo.org/viewtopic-t-1128355-start-0.html)，[不同循环依赖的类型](https://devmanual.gentoo.org/general-concepts/dependencies/index.html#circular-dependencies)
 
 3. 64位的cpu手动编译内核提示不支持选64位指令拒绝编译 
 
@@ -41,3 +41,11 @@ Gentoo需要使用`eselect profile`选择profile，建议选择最精简的那�
 > Portage 2.1.11.55 (default/linux/x86/13.0, gcc-4.6.3, glibc-2.15-r3, 3.4.42-std3 51-amd64 x86_64
 
 注意到虽然后面有`x86_64`，但是前面的`default/linux/x86`就说明了是32位的了，正确的应该是`default/linux/amd64`。
+
+# Gentoo AMD64在实体机上的安装
+在实体机上安Gentoo的话，与vbox其实大同小异。如果已经装有linux了，就不需要用livecd，可以分好区，解压stage3,直接chroot进去,没有权限的可以试试fakeroot，注意要用/usr/bin/env -i 消除外部的变量，与外部的linux完全隔离，同时要设置好$HOME和$TERM。更懒的甚至可以不用装grub，每次进入linux后chroot进gentoo，这样gentoo内部不用再编译原来的linux已经有的各种工具比如x11，也有个部分可用的gentoo环境。甚至进一步还可以像brew那样，参考<https://wiki.gentoo.org/wiki/Project:Prefix> 。
+
+如果还是要进入gentoo系统，原本的linux一般已经有grub，就不用安grub了，直接update grub.cfg就行。我原本的linux是Ubuntu，update-grub不能很好地自动配置btrfs subvolume上的kernel，尤其是根目录在一个subvolume上比如./@root（当然可以起别的名字，这里只是例子）而不是./ (注意这里的相对路径相对的是btrfs分区)。
+- 第一个问题是update-grub可能自动识别不到gentoo系统，这需要先把根目录的subvolume ./@root挂载到./，才能识别。
+- 第二个问题是重启后grub search root会直接把分区./当作root，不会自动挂载你根目录的subvolume @root，导致它找不到boot下面的内核和initramfs，解决方法是加个软链接，把./@root/boot给链接到./boot。
+- 最后一个问题是，成功启动了gentoo的内核也加载了initramfs，但gentoo的内核还是不知道root其实是在subvolume @root，fstab不会起作用因为fstab也在@root上，解决方法是给gentoo内核加启动参数，rootflags=subvol=@root，注意下次update-grub可能把这个给覆盖掉,建议放在update-grub或者grub-mkconfig的配置里。

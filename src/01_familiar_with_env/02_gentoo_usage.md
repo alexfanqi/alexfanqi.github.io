@@ -7,6 +7,8 @@ Gentoo和arch差不多都是从仓库取得源代码，然后在用户机子上�
 
 ***oneshot的use case***: --oneshot就是安装这个包但不加入@world里。典型的use case是，你只想重新编译一下某个包，但不确定这个包是不是其他包的依赖，也不确定这个包是否加入到@world里了。想象一下如果此时不用oneshot，这个包就会自动加入@world里，如果这个包之前不在@world里而只是某个软件的依赖，那它就会被声明为系统明确要保留，即使依赖它的软件被卸载了，它也不会被depclean给删掉，过个几天你也忘了这事了，于是一个不需要的包以及它自己的依赖就可能永远被留在系统里了。。。。
 
+另外，portage安装软件会先进入一个临时目录/tmp/portage/category/package下进行编译安装，包括应用一些用户patch，然后再应用到用户系统。portage对某些文件有修改保护，比如/etc，安装包修改时会创建一个cfg_num原文件名副本，之后用户可以手动或者用etc-update自动替换，这样也就不用担心装软件中途停止搞乱系统了。
+
 理解了这些感觉就好了，openrc和systemd 服务管理各个系统大同小异。
 
 ## 一些有用的提示
@@ -14,10 +16,12 @@ Gentoo和arch差不多都是从仓库取得源代码，然后在用户机子上�
 * equery, eix，euse，eselect，emaint，portageq
 * bash-completion, gentoo-bashcomp, tldr， 自动补全和太长不读提示，让生活更美好
 * porthole： portage的一个gui前端
-* layman：管理不同overlay仓库的
-* 查找其他的overlay，[gpo.zugaina.org/Overlays](http://gpo.zugaina.org/Overlays) [overlays.gentoo.org/](https://overlays.gentoo.org/)
+* layman vs eselect repository：管理不同overlay仓库的
+* 查找更多overlay (repo)，<https://overlays.gentoo.org/>,<http://gpo.zugaina.org/Overlays>
 * ccache: 大概是可以cache编译过的obj，之后直接拿来用，节省时间
 * 完成后提醒：emerge 有一个-A选项，可以在命令完成后“滴”响下铃提醒你，这样就不用坐在那里盯着了。更复杂的提醒可以通过配置portage的log直接发email，这个还是在irc上学到的，我还没试过不过应该可行，参考 <https://wiki.gentoo.org/wiki/Portage_log#Configuring_for_e-mail>
+* genlop: 估计编译时间
+* 把编译目录通过tmpfs放到ram上: <https://wiki.gentoo.org/wiki/Portage_TMPDIR_on_tmpfs>
 
 ## 探索实践问题
 最后留一些问题方便自学探索熟悉gentoo，感谢mentor提供，我自己的回答放在文档最后对应章节。
