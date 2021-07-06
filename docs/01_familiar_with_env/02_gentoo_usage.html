@@ -187,6 +187,8 @@
 <li>完成后提醒：emerge 有一个-A选项，可以在命令完成后“滴”响下铃提醒你，这样就不用坐在那里盯着了。更复杂的提醒可以通过配置portage的log直接发email，这个还是在irc上学到的，我还没试过不过应该可行，参考 <a href="https://wiki.gentoo.org/wiki/Portage_log#Configuring_for_e-mail">https://wiki.gentoo.org/wiki/Portage_log#Configuring_for_e-mail</a></li>
 <li>genlop: 估计编译时间</li>
 <li>把编译目录通过tmpfs放到ram上: <a href="https://wiki.gentoo.org/wiki/Portage_TMPDIR_on_tmpfs">https://wiki.gentoo.org/wiki/Portage_TMPDIR_on_tmpfs</a></li>
+<li>使用squashfs节省空间/var/db/portage，一般这个repo有非常多文件，结合overlayfs可以节省很多空间，<a href="https://www.brunsware.de/blog/portage-tree-squashfs-overlayfs">https://www.brunsware.de/blog/portage-tree-squashfs-overlayfs</a></li>
+<li>wget-paste: 把报错文件方便地分享成url</li>
 </ul>
 <h2 id="探索实践问题"><a class="header" href="#探索实践问题">探索实践问题</a></h2>
 <p>最后留一些问题方便自学探索熟悉gentoo，感谢mentor提供，我自己的回答放在文档最后对应章节。</p>

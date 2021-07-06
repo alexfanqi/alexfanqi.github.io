@@ -234,6 +234,7 @@
 <li>第二个问题是重启后grub search root会直接把分区./当作root，不会自动挂载你根目录的subvolume @root，导致它找不到boot下面的内核和initramfs，解决方法是加个软链接，把./@root/boot给链接到./boot。</li>
 <li>最后一个问题是，成功启动了gentoo的内核也加载了initramfs，但gentoo的内核还是不知道root其实是在subvolume @root，fstab不会起作用因为fstab也在@root上，解决方法是给gentoo内核加启动参数，rootflags=subvol=@root，注意下次update-grub可能把这个给覆盖掉,建议放在update-grub或者grub-mkconfig的配置里。</li>
 </ul>
+<p>后两个问题实际btrfs subvolume设置default是@root就行了</p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="gentoo使用"><a class="header" href="#gentoo使用">Gentoo使用</a></h1>
 <h2 id="big-picture"><a class="header" href="#big-picture">Big Picture</a></h2>
 <p>Gentoo和arch差不多都是从仓库取得源代码，然后在用户机子上编译，然后安装的。gentood的包管理系统是portage，对应的cli命令是emerge，就像arch的pacman。所谓e-merge就像是git merge，把repo仓库的代码给merge到用户机子上，当然作为包管理器emerge也有其他功能。除了portage当然也有其他的包管理器。每个包都有一个ebuild文本文件来记录包的相关信息，gentoo的repo就是一堆ebuild文本文件和某些其他信息的集合，也叫overlay。要管理这些包就要一些flag，包括keyword，use flag和各种<a href="https://devmanual.gentoo.org/ebuild-writing/variables/">variable</a>等，gentoo的包管理大体也就基于这些flag。</p>
@@ -253,6 +254,8 @@
 <li>完成后提醒：emerge 有一个-A选项，可以在命令完成后“滴”响下铃提醒你，这样就不用坐在那里盯着了。更复杂的提醒可以通过配置portage的log直接发email，这个还是在irc上学到的，我还没试过不过应该可行，参考 <a href="https://wiki.gentoo.org/wiki/Portage_log#Configuring_for_e-mail">https://wiki.gentoo.org/wiki/Portage_log#Configuring_for_e-mail</a></li>
 <li>genlop: 估计编译时间</li>
 <li>把编译目录通过tmpfs放到ram上: <a href="https://wiki.gentoo.org/wiki/Portage_TMPDIR_on_tmpfs">https://wiki.gentoo.org/wiki/Portage_TMPDIR_on_tmpfs</a></li>
+<li>使用squashfs节省空间/var/db/portage，一般这个repo有非常多文件，结合overlayfs可以节省很多空间，<a href="https://www.brunsware.de/blog/portage-tree-squashfs-overlayfs">https://www.brunsware.de/blog/portage-tree-squashfs-overlayfs</a></li>
+<li>wget-paste: 把报错文件方便地分享成url</li>
 </ul>
 <h2 id="探索实践问题"><a class="header" href="#探索实践问题">探索实践问题</a></h2>
 <p>最后留一些问题方便自学探索熟悉gentoo，感谢mentor提供，我自己的回答放在文档最后对应章节。</p>
@@ -271,11 +274,24 @@
 <p>接下来gentoo上qemu配置可以参考<a href="https://wiki.gentoo.org/wiki/QEMU/Linux_guest">https://wiki.gentoo.org/wiki/QEMU/Linux_guest</a> 和 <a href="https://wiki.gentoo.org/wiki/QEMU">https://wiki.gentoo.org/wiki/QEMU</a>，主要就是QEMU_USER_TARGETS和QEMU_SOFTMMU_TARGETS两个变量。</p>
 <h2 id="qemu"><a class="header" href="#qemu">qemu</a></h2>
 <p>gentoo的qemu自己安装了riscv的sbi。如果qemu没有带sbi的话（qemu会报错没有bios），可以去自己编译然后使用<code>-bios</code>指定。使用<a href="https://lib.rs/crates/rustsbi">https://lib.rs/crates/rustsbi</a> 或者<a href="https://github.com/riscv/opensbi">https://github.com/riscv/opensbi</a>或者 u-boot都行,关于sbi还是参考标准文档 <a href="https://github.com/riscv/riscv-sbi-doc">https://github.com/riscv/riscv-sbi-doc</a>，大致理解成固件就行了。</p>
-<p>ubuntu的包仓库里qemu riscv编译的似乎有问题，硬件时钟rtc没法用，kernel config的rtc默认是打开的并且在/proc/config.gz中也确认过内置包含了，可是/dev/下压根没有rtc文件，时间总是1970哈哈哈哈，用gentoo的qemu就没有问题，过几天去提bug问问。</p>
+<p>可能提示找不到/dev/rtc0，检查内核一般都是包括实时时钟的，这就说明没有硬件时钟，此时可以使用软件时钟。</p>
 <p>另外也可以使用virish和virt-manager来管理qemu的虚拟机。</p>
 <h2 id="stage3"><a class="header" href="#stage3">stage3</a></h2>
 <p>应该直接用dlan的stage4包的，花费了挺多时间在补全dilfridge的stage3包。结果发现<a href="https://wiki.gentoo.org/wiki/Raspberry_Pi">raspberry pi的gentoo wiki</a>包括了大部分遇到的问题。。。算是learn it the hard way了。</p>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><p>arch tester, 之前会用app-portage/tatt做测试 </p>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><p>arch tester, 之前会用app-portage/tatt做测试</p>
+<p>关于虚拟机端口转发，qemu,virsh与iptables配置
+linux提供的各种网络接口，什么是tap/tun, bridge，bonded，NIC之类的，<a href="https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking#team_device">https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking#team_device</a>
+<a href="https://aboullaite.me/kvm-qemo-forward-ports-with-iptables/">https://aboullaite.me/kvm-qemo-forward-ports-with-iptables/</a>
+<a href="https://serverfault.com/questions/903629/qemu-network-bridging-for-having-a-public-ip">https://serverfault.com/questions/903629/qemu-network-bridging-for-having-a-public-ip</a></p>
+<p>virsh zfs pool
+<a href="https://lucanuscervus-notes.readthedocs.io/en/latest/Virtualization/Virsh/Virsh%20-%20Storage/">https://lucanuscervus-notes.readthedocs.io/en/latest/Virtualization/Virsh/Virsh%20-%20Storage/</a></p>
+<p>libguestfs 操作guest vm的镜像文件</p>
+<p>nfs &amp; sambda 方便地网络共享文件 </p>
+<p>user mode linux <a href="https://landley.net/writing/docs/UML.html">https://landley.net/writing/docs/UML.html</a></p>
+<p>有关linux启动的文章
+<a href="https://opensource.com/article/18/1/analyzing-linux-boot-process">https://opensource.com/article/18/1/analyzing-linux-boot-process</a></p>
+<p>有关irssi的使用，吐槽一下irssi文档写的真不怎么样，啥也找不到。
+<a href="https://joost.vunderink.net/blog/2012/07/01/irssi-tricks-join-channels-automatically/">https://joost.vunderink.net/blog/2012/07/01/irssi-tricks-join-channels-automatically/</a></p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><ul>
 <li>
 <p>EUSE很杂，不过官网有些不错的参考，<a href="https://packages.gentoo.org/useflags">https://packages.gentoo.org/useflags</a></p>
@@ -290,6 +306,9 @@
 <p>中途失败的话可以去/var/tmp/portage/下面查看log和编译文件</p>
 </li>
 <li>
+<p>想要debug的话，可以用package.env，把-g -ggdb给打开，还有一些feature，比如keepwork,keeptmp,splitdebug,etc</p>
+</li>
+<li>
 <p>管理仓库的时候，profile下没有 package.unmask，只能在package.mask里加-package，管理系统的时候在/etc/portage/下则可以用package.unmask，优先级比仓库中的mask高，所以可以取消mask</p>
 </li>
 <li>
@@ -302,6 +321,20 @@
 <p><a href="https://devmanual.gentoo.org/ebuild-writing/variables/">https://devmanual.gentoo.org/ebuild-writing/variables/</a></p>
 </li>
 </ul>
+<p>查缺少riscv keyword的dependency
+<code>for pkg in $(qdepends -t xdg-desktop-portal-kde|sed -e 's/^&gt;=/=/g' -e 's/\(\S+\)/&quot;\1&quot;/g') ; do qkeyword -p $pkg -n riscv; done</code>
+查找某个category中缺失riscv keyword的包
+<code>for pkg in $(eix -C -c net-analyzer|head -n -3|cut -d ' ' -f2); do qkeyword -p $pkg -n riscv; done</code>
+以上两个有了emerge --autounmask后就不怎么需要了</p>
+<p>mgorny大佬的一些dev用小脚本
+<a href="https://github.com/mgorny/mgorny-dev-scripts">https://github.com/mgorny/mgorny-dev-scripts</a></p>
+<p>快速改软件源码（不需要用户patch），当然只适合测试和权宜之计
+<a href="https://www.reddit.com/r/Gentoo/comments/52qhcn/how_do_i_manually_edit_my_sources_for_emerge/">https://www.reddit.com/r/Gentoo/comments/52qhcn/how_do_i_manually_edit_my_sources_for_emerge/</a></p>
+<p>在accept keywords里用<code>&lt; category/PN-9999</code>，可以避免把live ebuild也给搞进来 </p>
+<p>善用btrfs和zfs的snapshot功能，比如测试一个软件之前打个snapshot，然后emerge就不必用oneshot了，测试完之后再restore回去，参考&lt;<a href="https://wiki.gentoo.org/wiki/Chroot_for_package_testing">https://wiki.gentoo.org/wiki/Chroot_for_package_testing</a>。避免在运行的时候打snapshot，相当于突然关机内存数据全没。要是对这个有要求的话可以参考<a href="http://www.linuxsystems.it/2018/10/consistently-backup-your-virtual-machines-using-libvirt-and-zfs-part-1/">Consistently backup your virtual machines using libvirt and zfs</a>。</p>
+<p>squashfs+overlayfs非常适合gentoo repo这种文件很多的目录，也适合很做测试，临时改一个文件试完马上就恢复回去</p>
+<p>KEYWORDS.dropped 是维护者主动drop某个keyword，需要维护者再发一个rekeywording request，不影响不在这个里面的arch</p>
+<p>USE debug 不是用来获取debug info的，不要随便启用它，参考gentoo debug的wiki的</p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><p>repoman
 pkgcore pkgcheck</p>
 <p>keyword networkmanager or mask

@@ -49,3 +49,5 @@ Gentoo需要使用`eselect profile`选择profile，建议选择最精简的那�
 - 第一个问题是update-grub可能自动识别不到gentoo系统，这需要先把根目录的subvolume ./@root挂载到./，才能识别。
 - 第二个问题是重启后grub search root会直接把分区./当作root，不会自动挂载你根目录的subvolume @root，导致它找不到boot下面的内核和initramfs，解决方法是加个软链接，把./@root/boot给链接到./boot。
 - 最后一个问题是，成功启动了gentoo的内核也加载了initramfs，但gentoo的内核还是不知道root其实是在subvolume @root，fstab不会起作用因为fstab也在@root上，解决方法是给gentoo内核加启动参数，rootflags=subvol=@root，注意下次update-grub可能把这个给覆盖掉,建议放在update-grub或者grub-mkconfig的配置里。
+
+后两个问题实际btrfs subvolume设置default是@root就行了

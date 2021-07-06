@@ -175,7 +175,7 @@
 <p>接下来gentoo上qemu配置可以参考<a href="https://wiki.gentoo.org/wiki/QEMU/Linux_guest">https://wiki.gentoo.org/wiki/QEMU/Linux_guest</a> 和 <a href="https://wiki.gentoo.org/wiki/QEMU">https://wiki.gentoo.org/wiki/QEMU</a>，主要就是QEMU_USER_TARGETS和QEMU_SOFTMMU_TARGETS两个变量。</p>
 <h2 id="qemu"><a class="header" href="#qemu">qemu</a></h2>
 <p>gentoo的qemu自己安装了riscv的sbi。如果qemu没有带sbi的话（qemu会报错没有bios），可以去自己编译然后使用<code>-bios</code>指定。使用<a href="https://lib.rs/crates/rustsbi">https://lib.rs/crates/rustsbi</a> 或者<a href="https://github.com/riscv/opensbi">https://github.com/riscv/opensbi</a>或者 u-boot都行,关于sbi还是参考标准文档 <a href="https://github.com/riscv/riscv-sbi-doc">https://github.com/riscv/riscv-sbi-doc</a>，大致理解成固件就行了。</p>
-<p>ubuntu的包仓库里qemu riscv编译的似乎有问题，硬件时钟rtc没法用，kernel config的rtc默认是打开的并且在/proc/config.gz中也确认过内置包含了，可是/dev/下压根没有rtc文件，时间总是1970哈哈哈哈，用gentoo的qemu就没有问题，过几天去提bug问问。</p>
+<p>可能提示找不到/dev/rtc0，检查内核一般都是包括实时时钟的，这就说明没有硬件时钟，此时可以使用软件时钟。</p>
 <p>另外也可以使用virish和virt-manager来管理qemu的虚拟机。</p>
 <h2 id="stage3"><a class="header" href="#stage3">stage3</a></h2>
 <p>应该直接用dlan的stage4包的，花费了挺多时间在补全dilfridge的stage3包。结果发现<a href="https://wiki.gentoo.org/wiki/Raspberry_Pi">raspberry pi的gentoo wiki</a>包括了大部分遇到的问题。。。算是learn it the hard way了。</p>

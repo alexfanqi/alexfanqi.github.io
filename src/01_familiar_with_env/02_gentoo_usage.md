@@ -22,6 +22,8 @@ Gentoo和arch差不多都是从仓库取得源代码，然后在用户机子上�
 * 完成后提醒：emerge 有一个-A选项，可以在命令完成后“滴”响下铃提醒你，这样就不用坐在那里盯着了。更复杂的提醒可以通过配置portage的log直接发email，这个还是在irc上学到的，我还没试过不过应该可行，参考 <https://wiki.gentoo.org/wiki/Portage_log#Configuring_for_e-mail>
 * genlop: 估计编译时间
 * 把编译目录通过tmpfs放到ram上: <https://wiki.gentoo.org/wiki/Portage_TMPDIR_on_tmpfs>
+* 使用squashfs节省空间/var/db/portage，一般这个repo有非常多文件，结合overlayfs可以节省很多空间，<https://www.brunsware.de/blog/portage-tree-squashfs-overlayfs>
+* wget-paste: 把报错文件方便地分享成url
 
 ## 探索实践问题
 最后留一些问题方便自学探索熟悉gentoo，感谢mentor提供，我自己的回答放在文档最后对应章节。
