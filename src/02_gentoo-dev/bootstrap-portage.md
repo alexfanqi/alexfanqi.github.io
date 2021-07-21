@@ -1,1 +1,0 @@
-记录手动编译portage的过程，参考了prefix bootstrap的脚本和portage 本身的ebuild 

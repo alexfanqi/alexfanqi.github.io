@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Gentoo-dev random notes - Road to Gentoo on RISC-V</title>
+        <title>Libunwind - Road to Gentoo on RISC-V</title>
         
         
 
@@ -98,7 +98,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../00_intro.html">Intro</a></li><li class="chapter-item expanded affix "><a href="../todo.html">TODO/timeline</a></li><li class="chapter-item expanded "><a href="../01_familiar_with_env/familiar_with_env.html"><strong aria-hidden="true">1.</strong> Get familiar with the environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../01_familiar_with_env/01_gentoo-amd64.html"><strong aria-hidden="true">1.1.</strong> Gentoo on AMD64</a></li><li class="chapter-item expanded "><a href="../01_familiar_with_env/02_gentoo_usage.html"><strong aria-hidden="true">1.2.</strong> Gentoo Usage</a></li><li class="chapter-item expanded "><a href="../01_familiar_with_env/03_qemu-riscv.html"><strong aria-hidden="true">1.3.</strong> Riscv64 on Qemu</a></li><li class="chapter-item expanded "><a href="../01_familiar_with_env/misc.html"><strong aria-hidden="true">1.4.</strong> misc</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Gentoo dev</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../02_gentoo-dev/gentoo-dev.html" class="active"><strong aria-hidden="true">2.1.</strong> Gentoo-dev random notes</a></li><li class="chapter-item expanded "><a href="../02_gentoo-dev/libunwind.html"><strong aria-hidden="true">2.2.</strong> Libunwind</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.3.</strong> Setup a test environment</div></li><li class="chapter-item expanded "><a href="../multiarch.html"><strong aria-hidden="true">2.4.</strong> Multiarch/multilib support on gentoo &amp; other distros</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Bootstrap</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../03_bootstrap/01_with-gentoo-for-riscv64.html"><strong aria-hidden="true">3.1.</strong> Bootstrap gentoo riscv64</a></li><li class="chapter-item expanded "><a href="../03_bootstrap/02_with-yocto-for-riscv32.html"><strong aria-hidden="true">3.2.</strong> Convert yocto to gentoo for riscv32</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Embedded dev on d1</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Meeting notes with mentor</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../meeting_notes/notes_01.html"><strong aria-hidden="true">5.1.</strong> week01</a></li><li class="chapter-item expanded "><a href="../meeting_notes/notes_02.html"><strong aria-hidden="true">5.2.</strong> week02</a></li><li class="chapter-item expanded "><a href="../meeting_notes/notes_03.html"><strong aria-hidden="true">5.3.</strong> week03</a></li><li class="chapter-item expanded "><a href="../meeting_notes/notes_04.html"><strong aria-hidden="true">5.4.</strong> week04</a></li><li class="chapter-item expanded "><a href="../meeting_notes/notes_05.html"><strong aria-hidden="true">5.5.</strong> week05</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Answers</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../01_familiar_with_env/02_answers.html"><strong aria-hidden="true">6.1.</strong> Gentoo Usage</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../00_intro.html">Intro</a></li><li class="chapter-item expanded affix "><a href="../todo.html">TODO/timeline</a></li><li class="chapter-item expanded "><a href="../01_familiar_with_env/familiar_with_env.html"><strong aria-hidden="true">1.</strong> Get familiar with the environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../01_familiar_with_env/01_gentoo-amd64.html"><strong aria-hidden="true">1.1.</strong> Gentoo on AMD64</a></li><li class="chapter-item expanded "><a href="../01_familiar_with_env/02_gentoo_usage.html"><strong aria-hidden="true">1.2.</strong> Gentoo Usage</a></li><li class="chapter-item expanded "><a href="../01_familiar_with_env/03_qemu-riscv.html"><strong aria-hidden="true">1.3.</strong> Riscv64 on Qemu</a></li><li class="chapter-item expanded "><a href="../01_familiar_with_env/misc.html"><strong aria-hidden="true">1.4.</strong> misc</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Gentoo dev</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../02_gentoo-dev/gentoo-dev.html"><strong aria-hidden="true">2.1.</strong> Gentoo-dev random notes</a></li><li class="chapter-item expanded "><a href="../02_gentoo-dev/libunwind.html" class="active"><strong aria-hidden="true">2.2.</strong> Libunwind</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.3.</strong> Setup a test environment</div></li><li class="chapter-item expanded "><a href="../multiarch.html"><strong aria-hidden="true">2.4.</strong> Multiarch/multilib support on gentoo &amp; other distros</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Bootstrap</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../03_bootstrap/01_with-gentoo-for-riscv64.html"><strong aria-hidden="true">3.1.</strong> Bootstrap gentoo riscv64</a></li><li class="chapter-item expanded "><a href="../03_bootstrap/02_with-yocto-for-riscv32.html"><strong aria-hidden="true">3.2.</strong> Convert yocto to gentoo for riscv32</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Embedded dev on d1</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Meeting notes with mentor</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../meeting_notes/notes_01.html"><strong aria-hidden="true">5.1.</strong> week01</a></li><li class="chapter-item expanded "><a href="../meeting_notes/notes_02.html"><strong aria-hidden="true">5.2.</strong> week02</a></li><li class="chapter-item expanded "><a href="../meeting_notes/notes_03.html"><strong aria-hidden="true">5.3.</strong> week03</a></li><li class="chapter-item expanded "><a href="../meeting_notes/notes_04.html"><strong aria-hidden="true">5.4.</strong> week04</a></li><li class="chapter-item expanded "><a href="../meeting_notes/notes_05.html"><strong aria-hidden="true">5.5.</strong> week05</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Answers</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../01_familiar_with_env/02_answers.html"><strong aria-hidden="true">6.1.</strong> Gentoo Usage</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -168,70 +168,40 @@
 
                 <div id="content" class="content">
                     <main>
-                        <ul>
-<li>
-<p>EUSE很杂，不过官网有些不错的参考，<a href="https://packages.gentoo.org/useflags">https://packages.gentoo.org/useflags</a></p>
-</li>
-<li>
-<p>slot和subslot，可以允许多个版本共存</p>
-</li>
-<li>
-<p>sandbox机制，主要是保护文件系统，防止写的有毛病的ebuild不小心修改了它不应该修改的文件</p>
-</li>
-<li>
-<p>中途失败的话可以去/var/tmp/portage/下面查看log和编译文件</p>
-</li>
-<li>
-<p>想要debug的话，可以用package.env，把-g -ggdb给打开，还有一些feature，比如keepwork,keeptmp,splitdebug,etc</p>
-</li>
-<li>
-<p>管理仓库的时候，profile下没有 package.unmask，只能在package.mask里加-package，管理系统的时候在/etc/portage/下则可以用package.unmask，优先级比仓库中的mask高，所以可以取消mask</p>
-</li>
-<li>
-<p>accepted-keyword和arch use flag是不同的东西</p>
-</li>
-<li>
-<p>eclasses, optfeatures?</p>
-</li>
-<li>
-<p><a href="https://devmanual.gentoo.org/ebuild-writing/variables/">https://devmanual.gentoo.org/ebuild-writing/variables/</a></p>
-</li>
+                        <h1 id="on-libunwind"><a class="header" href="#on-libunwind">on libunwind</a></h1>
+<p>libunwind 是一个编程获取call stack的API标准，为什么要是API标准而不是单独的库呢，可以参考这个<a href="https://stackoverflow.com/questions/25356691/what-kind-of-stack-unwinding-libraries-do-exist-and-whats-the-difference">What kind of stack unwinding libraries do exist and what's the difference?</a></p>
+<p>比较好的解释资料：</p>
+<ul>
+<li><a href="https://eli.thegreenplace.net/2015/programmatic-access-to-the-call-stack-in-c/">https://eli.thegreenplace.net/2015/programmatic-access-to-the-call-stack-in-c/</a></li>
+<li>中文的
+<a href="https://wdv4758h-notes.readthedocs.io/zh_TW/latest/libunwind.html">https://wdv4758h-notes.readthedocs.io/zh_TW/latest/libunwind.html</a></li>
 </ul>
-<p>查缺少riscv keyword的dependency
-<code>for pkg in $(qdepends -t xdg-desktop-portal-kde|sed -e 's/^&gt;=/=/g' -e 's/\(\S+\)/&quot;\1&quot;/g') ; do qkeyword -p $pkg -n riscv; done</code>
-查找某个category中缺失riscv keyword的包
-<code>for pkg in $(eix -C -c net-analyzer|head -n -3|cut -d ' ' -f2); do qkeyword -p $pkg -n riscv; done</code>
-以上两个有了emerge --autounmask后就不怎么需要了</p>
-<p>mgorny大佬的一些dev用小脚本
-<a href="https://github.com/mgorny/mgorny-dev-scripts">https://github.com/mgorny/mgorny-dev-scripts</a></p>
-<p>快速改软件源码（不需要用户patch），当然只适合测试和权宜之计
-<a href="https://www.reddit.com/r/Gentoo/comments/52qhcn/how_do_i_manually_edit_my_sources_for_emerge/">https://www.reddit.com/r/Gentoo/comments/52qhcn/how_do_i_manually_edit_my_sources_for_emerge/</a></p>
-<p>在accept keywords里用<code>&lt;category/PN-9999</code>，可以避免把live ebuild也给搞进来 </p>
-<p>善用btrfs和zfs的snapshot功能，比如测试一个软件之前打个snapshot，然后emerge就不必用oneshot了，测试完之后再restore回去，参考&lt;<a href="https://wiki.gentoo.org/wiki/Chroot_for_package_testing">https://wiki.gentoo.org/wiki/Chroot_for_package_testing</a>。避免在运行的时候打snapshot，相当于突然关机内存数据全没。要是对这个有要求的话可以参考<a href="http://www.linuxsystems.it/2018/10/consistently-backup-your-virtual-machines-using-libvirt-and-zfs-part-1/">Consistently backup your virtual machines using libvirt and zfs</a>。</p>
-<p>squashfs+overlayfs非常适合gentoo repo这种文件很多的目录，也很适合做测试，临时改一个文件试完马上就恢复回去</p>
-<p>KEYWORDS.dropped 是维护者主动drop某个keyword，就是在arch前加个-，比如KEYWORDS=&quot;-riscv&quot;，比较重要的包需要维护者再发一个rekeywording request。</p>
-<p>对每个包可以设置单独的环境，参考wiki gentoo debug。比如不要在全局设置FEATURES=”test&quot;,或者对单个软件限制-j并行数量。</p>
-<p>USE debug 不是用来获取debug info的，不要随便启用它，参考gentoo debug的wiki的</p>
-<p>注意CFLAGS CXXFLAGS都是会覆盖的，在packege.env设置时要CFLAGS=&quot;${CFLAGS} -DSOME_FLAGS&quot;, 而FEATURES则是会累加到一起的，所以直接FEATURES=&quot;test&quot;就行。</p>
-<p>不同文件use flag的优先级，<a href="https://wiki.gentoo.org/wiki/USE_ORDER">https://wiki.gentoo.org/wiki/USE_ORDER</a>, 可以用<code>portageq envvar USE_ORDER</code>去查</p>
-<p>euse -i cups,可以查询某use具体在那个文件中设置的,make.conf/package.use/...</p>
-<p>有时候碰到的use flag加个括号，比如(-cups)，指的是<a href="https://archives.gentoo.org/gentoo-user/message/85a73d3af73e2efb3f28f4bada1aa0b1">https://archives.gentoo.org/gentoo-user/message/85a73d3af73e2efb3f28f4bada1aa0b1</a></p>
-<p>关于git sign off的一个坑，commit-tree不会加signed off by，网上的答案大部分都走偏了,<a href="https://pmhahn.github.io/git-signoff/">https://pmhahn.github.io/git-signoff/</a></p>
-<p>一堆的package.*文件实在头痛，可以试试mgorny大佬的flaggie</p>
-<p>除了MAKEOPT=“-jN -lM”外还可以设置EMERGE_DEFAULT_OPTS=&quot;--jobs L --load-average H&quot;，能更充分利用cpu。 </p>
+<p>strace如果编译带了libunwind，那么可以用-k来运行时查看stack trace,<a href="https://www.programmersought.com/article/6034185246/">https://www.programmersought.com/article/6034185246/</a></p>
+<h2 id="有关libunwind的一些内容"><a class="header" href="#有关libunwind的一些内容">有关libunwind的一些内容</a></h2>
+<ol>
+<li><a href="https://forums.gentoo.org/viewtopic-t-1068838-start-0.html">https://forums.gentoo.org/viewtopic-t-1068838-start-0.html</a> 这个是 static-libs use冲突，和libunwind没太大关系，但也挺有意思的。</li>
+</ol>
+<p><a href="https://bugs.gentoo.org/612602">https://bugs.gentoo.org/612602</a>
+这个主要是默认的use flag起了冲突，libunwind默认不启用static-libs，而libcxxabi默认要static-libs，有其他的包又依赖着libcxxabi，然后就打架了。可以修改其他的所有包去掉static-libs但是这样好像说会影响应该默认就能跑的clang -static，所以得把libcxxabi的static-libs留着，因此 默认给libunwind启用static-lib。</p>
+<p>然后还没完，几年后又出了<a href="https://bugs.gentoo.org/768978">https://bugs.gentoo.org/768978</a>，这次是因为zlib又依赖于libunwind了，然后社区觉得应该避免默认启用static-lib，同时又感觉人们不在乎libcxx被编成static还是不static (<a href="https://bugs.gentoo.org/760504">https://bugs.gentoo.org/760504</a>)，于是就把unwind和llvm-unwind的默认static-libs又给去掉了。结果和之前一样，libcxx默认启用static-libs，要依赖libcxxabi，然后又依赖于libunwind。（没想到吧，我又改了回去，#推一推眼镜）。于是这次终于从上层把libcxx的static-libs给去掉了。</p>
+<ol start="2">
+<li>具体到riscv上的问题
+<a href="https://github.com/libunwind/libunwind/pull/267">https://github.com/libunwind/libunwind/pull/267</a>
+有待未来研究具体细节</li>
+</ol>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../01_familiar_with_env/misc.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../02_gentoo-dev/gentoo-dev.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../02_gentoo-dev/libunwind.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../multiarch.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -243,13 +213,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../01_familiar_with_env/misc.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../02_gentoo-dev/gentoo-dev.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../02_gentoo-dev/libunwind.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../multiarch.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

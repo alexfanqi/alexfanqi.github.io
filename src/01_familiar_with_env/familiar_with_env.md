@@ -12,3 +12,5 @@
 
 [Gentoo Usage](02_gentoo_usage.md)
 
+--------
+火星了，我才知道chrome os是基于gentoo做出来的~~~~

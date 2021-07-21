@@ -100,7 +100,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="00_intro.html">Intro</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/familiar_with_env.html"><strong aria-hidden="true">1.</strong> Get familiar with the environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="01_familiar_with_env/01_gentoo-amd64.html"><strong aria-hidden="true">1.1.</strong> Gentoo on AMD64</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/02_gentoo_usage.html"><strong aria-hidden="true">1.2.</strong> Gentoo Usage</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/03_qemu-riscv.html"><strong aria-hidden="true">1.3.</strong> Riscv64 on Qemu</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/misc.html"><strong aria-hidden="true">1.4.</strong> misc</a></li></ol></li><li class="chapter-item expanded "><a href="02_gentoo-dev/gentoo-dev.html"><strong aria-hidden="true">2.</strong> gentoo-dev random notes</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> meeting notes with mentor</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="meeting_notes/notes_01.html"><strong aria-hidden="true">3.1.</strong> week01</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Answers</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="01_familiar_with_env/02_answers.html"><strong aria-hidden="true">4.1.</strong> Gentoo Usage</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="00_intro.html">Intro</a></li><li class="chapter-item expanded affix "><a href="todo.html">TODO/timeline</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/familiar_with_env.html"><strong aria-hidden="true">1.</strong> Get familiar with the environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="01_familiar_with_env/01_gentoo-amd64.html"><strong aria-hidden="true">1.1.</strong> Gentoo on AMD64</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/02_gentoo_usage.html"><strong aria-hidden="true">1.2.</strong> Gentoo Usage</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/03_qemu-riscv.html"><strong aria-hidden="true">1.3.</strong> Riscv64 on Qemu</a></li><li class="chapter-item expanded "><a href="01_familiar_with_env/misc.html"><strong aria-hidden="true">1.4.</strong> misc</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Gentoo dev</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="02_gentoo-dev/gentoo-dev.html"><strong aria-hidden="true">2.1.</strong> Gentoo-dev random notes</a></li><li class="chapter-item expanded "><a href="02_gentoo-dev/libunwind.html"><strong aria-hidden="true">2.2.</strong> Libunwind</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.3.</strong> Setup a test environment</div></li><li class="chapter-item expanded "><a href="multiarch.html"><strong aria-hidden="true">2.4.</strong> Multiarch/multilib support on gentoo &amp; other distros</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Bootstrap</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="03_bootstrap/01_with-gentoo-for-riscv64.html"><strong aria-hidden="true">3.1.</strong> Bootstrap gentoo riscv64</a></li><li class="chapter-item expanded "><a href="03_bootstrap/02_with-yocto-for-riscv32.html"><strong aria-hidden="true">3.2.</strong> Convert yocto to gentoo for riscv32</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Embedded dev on d1</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Meeting notes with mentor</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="meeting_notes/notes_01.html"><strong aria-hidden="true">5.1.</strong> week01</a></li><li class="chapter-item expanded "><a href="meeting_notes/notes_02.html"><strong aria-hidden="true">5.2.</strong> week02</a></li><li class="chapter-item expanded "><a href="meeting_notes/notes_03.html"><strong aria-hidden="true">5.3.</strong> week03</a></li><li class="chapter-item expanded "><a href="meeting_notes/notes_04.html"><strong aria-hidden="true">5.4.</strong> week04</a></li><li class="chapter-item expanded "><a href="meeting_notes/notes_05.html"><strong aria-hidden="true">5.5.</strong> week05</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Answers</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="01_familiar_with_env/02_answers.html"><strong aria-hidden="true">6.1.</strong> Gentoo Usage</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -172,9 +172,41 @@
                     <main>
                         <h1 id="intro"><a class="header" href="#intro">Intro</a></h1>
 <p>本文档记录了我在<a href="https://github.com/lazyparser/weloveinterns">PCLT 实验室</a>做实习生，处理Gentoo和RISC-V的历程。里面有一些使用经验和提示。</p>
-<p>仅是个人记录的文档，有错误敬请指出</p>
+<p>写这些文档不是为了当作手把手的教程，而是记录个人的学习和一些随想，更重要的是提供一些hint来让后来者上手更加容易。因此尽量不废话又能把东西解释清楚，同时提供我各种有用/好玩的资源的索引。</p>
+<p>有错误敬请指出</p>
 <hr />
 <p>感谢我的mentor <a href="https://github.com/dlan17">@dlan17</a>的指导</p>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="学习计划和路程"><a class="header" href="#学习计划和路程">学习计划和路程</a></h1>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+学习qemu libvirt配置，了解uboot,opensbi等</li>
+<li><input disabled="" type="checkbox" checked=""/>
+理解iptables, autoconf/automake，
+nfs，squashfs+overlayfs     done on July 5th 2021</li>
+<li><input disabled="" type="checkbox"/>
+boostrap gentoo for riscv32
+<ul>
+<li><input disabled="" type="checkbox"/>
+学习yocto和buildroot</li>
+<li><input disabled="" type="checkbox"/>
+研究d1的buildroot fork代码</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"/>
+研究multilib 在各个发行版的实现</li>
+<li><input disabled="" type="checkbox"/>
+java各种发行版的关系，给bisheng jdk写ebuild</li>
+<li><input disabled="" type="checkbox"/>
+给llvm写ebuild</li>
+<li><input disabled="" type="checkbox"/>
+keyword kde，学习qt和kde基本debug技能</li>
+<li><input disabled="" type="checkbox"/>
+研究xfel，uboot，oreboot/rustsbi等</li>
+<li><input disabled="" type="checkbox"/>
+研究全志allwinner的fel。gentoo在d1上启动</li>
+<li><input disabled="" type="checkbox"/>
+测试lxqt，lxde，lumina，kde，gnome等</li>
+</ul>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="get-familiar-with-the-environment"><a class="header" href="#get-familiar-with-the-environment">Get familiar with the environment</a></h1>
 <p>本章目的是准备好amd64和qemu-risc-v上的gentoo，熟悉环境并比较他们的差异</p>
 <h2 id="获取信息的途径"><a class="header" href="#获取信息的途径">获取信息的途径</a></h2>
@@ -186,6 +218,8 @@
 </ul>
 <p><a href="01_familiar_with_env/01_gentoo-amd64.html">Gentoo on AMD 64</a></p>
 <p><a href="01_familiar_with_env/02_gentoo_usage.html">Gentoo Usage</a></p>
+<hr />
+<p>火星了，我才知道chrome os是基于gentoo做出来的~~~~</p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="gentoo-amd64在virtualbox上的安装"><a class="header" href="#gentoo-amd64在virtualbox上的安装">Gentoo AMD64在VirtualBox上的安装</a></h1>
 <p>因为<a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage">官方文档handbook</a>会更新和变化并且有中文翻译，所以本文档不具体讨论安装流程，只在这里补充一些细节和遇到的问题。</p>
 <hr />
@@ -237,11 +271,11 @@
 <p>后两个问题实际btrfs subvolume设置default是@root就行了</p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="gentoo使用"><a class="header" href="#gentoo使用">Gentoo使用</a></h1>
 <h2 id="big-picture"><a class="header" href="#big-picture">Big Picture</a></h2>
-<p>Gentoo和arch差不多都是从仓库取得源代码，然后在用户机子上编译，然后安装的。gentood的包管理系统是portage，对应的cli命令是emerge，就像arch的pacman。所谓e-merge就像是git merge，把repo仓库的代码给merge到用户机子上，当然作为包管理器emerge也有其他功能。除了portage当然也有其他的包管理器。每个包都有一个ebuild文本文件来记录包的相关信息，gentoo的repo就是一堆ebuild文本文件和某些其他信息的集合，也叫overlay。要管理这些包就要一些flag，包括keyword，use flag和各种<a href="https://devmanual.gentoo.org/ebuild-writing/variables/">variable</a>等，gentoo的包管理大体也就基于这些flag。</p>
+<p>Gentoo和arch差不多都是从仓库取得源代码，然后在用户机子上编译，然后安装的。gentoo的包管理系统是portage，对应的cli命令是emerge，就像arch的pacman。所谓e-merge就像是git merge，把repo仓库的包给merge到用户机子上，当然作为包管理器emerge也有其他功能。除了portage当然也有其他的包管理器。每个包都有一个直白的脚本文件叫ebuild来自动化控制代码的下载，配置，编译，安装，测试等过程 以及记录包的相关信息。gentoo的repo就是一堆ebuild文本文件和某些其他信息的集合，也叫overlay。要管理这些包就要一些flag，包括keyword，use flag和各种<a href="https://devmanual.gentoo.org/ebuild-writing/variables/">variable</a>等，gentoo的包管理大体也就基于这些flag。</p>
 <p>刚使用emerge可能很迷，与apt和dnf会有些不同。首先，@world登记了系统中明确要保留的程序，包括用户安装的包和系统的@profile及gentoo必需的@system。删除一个包要先deselect，把包移除@world，声明我不需要这个包了系统没必要为我保留了，但包还没被删除（还可以--select给加回来），之后某天可以统一depclean计算各种依赖，如果没有别的软件依赖它，就一并完全删除。这个@world机制就motivate了--oneshot存在的意义。</p>
 <p><em><strong>oneshot的use case</strong></em>: --oneshot就是安装这个包但不加入@world里。典型的use case是，你只想重新编译一下某个包，但不确定这个包是不是其他包的依赖，也不确定这个包是否加入到@world里了。想象一下如果此时不用oneshot，这个包就会自动加入@world里，如果这个包之前不在@world里而只是某个软件的依赖，那它就会被声明为系统明确要保留，即使依赖它的软件被卸载了，它也不会被depclean给删掉，过个几天你也忘了这事了，于是一个不需要的包以及它自己的依赖就可能永远被留在系统里了。。。。</p>
 <p>另外，portage安装软件会先进入一个临时目录/tmp/portage/category/package下进行编译安装，包括应用一些用户patch，然后再应用到用户系统。portage对某些文件有修改保护，比如/etc，安装包修改时会创建一个cfg_num原文件名副本，之后用户可以手动或者用etc-update自动替换，这样也就不用担心装软件中途停止搞乱系统了。</p>
-<p>理解了这些感觉就好了，openrc和systemd 服务管理各个系统大同小异。</p>
+<p>理解了这些感觉就好了，openrc和systemd 服务管理各个系统大同小异。systemd的timer可以完全代替fcron和anacron什么的。openrc-update add xxx default其实就是在/etc/runtime创建了个软链接，可以自己手动去改。</p>
 <h2 id="一些有用的提示"><a class="header" href="#一些有用的提示">一些有用的提示</a></h2>
 <p><a href="https://wiki.gentoo.org/wiki/Gentoo_Cheat_Sheet#Overlays">cheatsheat</a></p>
 <ul>
@@ -256,6 +290,7 @@
 <li>把编译目录通过tmpfs放到ram上: <a href="https://wiki.gentoo.org/wiki/Portage_TMPDIR_on_tmpfs">https://wiki.gentoo.org/wiki/Portage_TMPDIR_on_tmpfs</a></li>
 <li>使用squashfs节省空间/var/db/portage，一般这个repo有非常多文件，结合overlayfs可以节省很多空间，<a href="https://www.brunsware.de/blog/portage-tree-squashfs-overlayfs">https://www.brunsware.de/blog/portage-tree-squashfs-overlayfs</a></li>
 <li>wget-paste: 把报错文件方便地分享成url</li>
+<li>只安装依赖(bdepend &amp; rdepend)，不安装软件,适合手动测试软件，类似apt build-dep: emerge有个 --onlydeps</li>
 </ul>
 <h2 id="探索实践问题"><a class="header" href="#探索实践问题">探索实践问题</a></h2>
 <p>最后留一些问题方便自学探索熟悉gentoo，感谢mentor提供，我自己的回答放在文档最后对应章节。</p>
@@ -269,29 +304,41 @@
 </ol>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h2 id="交叉编译"><a class="header" href="#交叉编译">交叉编译</a></h2>
 <p>首先就是要获得交叉编译器，gentoo可以直接用crossdev，先创建一个本地overlay，然后crossdev会帮你收拾一切，也可以参考crossdev的脚本写个自己的wrapper处理环境变量。参考<a href="https://wiki.gentoo.org/wiki/Embedded_Handbook/General/Creating_a_cross-compiler">https://wiki.gentoo.org/wiki/Embedded_Handbook/General/Creating_a_cross-compiler</a></p>
-<p>懒得自己编译的话，也可以直接去<a href="https://toolchains.bootlin.com/releases_riscv64.html">crossdev</a>下载编译好的工具包。</p>
+<p>非gentoo系统懒得自己编译的话，也可以直接去<a href="https://toolchains.bootlin.com/releases_riscv64.html">bootlin</a>下载编译好的工具包，当然gentoo用crossdev还是最方便的。</p>
 <p>gentoo上编译内核直接使用genkernel就行，注意加入virtio支持，才能正常使用qemu。有个依赖需要perl，但perl支持riscv的multilib的ebuild似乎还有问题，需要打一个补丁，参考<a href="https://bugs.gentoo.org/794463">https://bugs.gentoo.org/794463</a></p>
 <p>接下来gentoo上qemu配置可以参考<a href="https://wiki.gentoo.org/wiki/QEMU/Linux_guest">https://wiki.gentoo.org/wiki/QEMU/Linux_guest</a> 和 <a href="https://wiki.gentoo.org/wiki/QEMU">https://wiki.gentoo.org/wiki/QEMU</a>，主要就是QEMU_USER_TARGETS和QEMU_SOFTMMU_TARGETS两个变量。</p>
+<h2 id="编译环境的隔离"><a class="header" href="#编译环境的隔离">编译环境的隔离</a></h2>
+<p>建议试试lxc或者更高级一点的docker来隔离环境，同时管理也方便。但不是必须的，遇到的把host环境错误地引入目标系统的情况不多。</p>
 <h2 id="qemu"><a class="header" href="#qemu">qemu</a></h2>
-<p>gentoo的qemu自己安装了riscv的sbi。如果qemu没有带sbi的话（qemu会报错没有bios），可以去自己编译然后使用<code>-bios</code>指定。使用<a href="https://lib.rs/crates/rustsbi">https://lib.rs/crates/rustsbi</a> 或者<a href="https://github.com/riscv/opensbi">https://github.com/riscv/opensbi</a>或者 u-boot都行,关于sbi还是参考标准文档 <a href="https://github.com/riscv/riscv-sbi-doc">https://github.com/riscv/riscv-sbi-doc</a>，大致理解成固件就行了。</p>
+<p>gentoo的qemu自己安装了riscv的sbi。如果qemu没有带sbi的话（qemu会报错没有bios），可以去自己编译然后使用<code>-bios</code>指定。使用<a href="https://lib.rs/crates/rustsbi">https://lib.rs/crates/rustsbi</a> 或者<a href="https://github.com/riscv/opensbi">https://github.com/riscv/opensbi</a>或者 u-boot都行,关于sbi还是参考标准文档 <a href="https://github.com/riscv/riscv-sbi-doc">https://github.com/riscv/riscv-sbi-doc</a>，大致理解成一个简化统一的启动固件就行了,这里有一篇讲的比较清楚<a href="https://bbs.aw-ol.com/topic/165/%E6%B7%B1%E5%BA%A6%E8%AE%A8%E8%AE%BA-%E7%9B%AE%E5%89%8Dd1%E8%8A%AF%E7%89%87%E5%BC%95%E5%AF%BC%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E8%BF%87%E9%95%BF%E7%9A%84%E9%97%AE%E9%A2%98-%E4%BB%A5%E5%8F%8A%E5%AF%B9risc-v%E4%B8%8B%E5%BC%95%E5%AF%BC%E7%A8%8B%E5%BA%8F%E7%8E%AF%E5%A2%83%E7%9A%84%E6%80%9D%E8%80%83">目前D1芯片引导启动流程过长的问题</a>，虽然本身是讨论d1开发板的。</p>
 <p>可能提示找不到/dev/rtc0，检查内核一般都是包括实时时钟的，这就说明没有硬件时钟，此时可以使用软件时钟。</p>
 <p>另外也可以使用virish和virt-manager来管理qemu的虚拟机。</p>
 <h2 id="stage3"><a class="header" href="#stage3">stage3</a></h2>
-<p>应该直接用dlan的stage4包的，花费了挺多时间在补全dilfridge的stage3包。结果发现<a href="https://wiki.gentoo.org/wiki/Raspberry_Pi">raspberry pi的gentoo wiki</a>包括了大部分遇到的问题。。。算是learn it the hard way了。</p>
+<p>应该直接用dlan的stage4包的，花费了挺多时间在补全dilfridge的stage3包（其实没啥好补的，当时对linux系统可以做到的简洁程度一无所知，通过不停试错花了很多时间）。结果发现<a href="https://wiki.gentoo.org/wiki/Raspberry_Pi">raspberry pi的gentoo wiki</a>包括了大部分遇到的问题。。。算是learn it the hard way了。想让系统启动可用，最小的可以用带dhcp的busybox，或者把openrc udev dhcpcd都编译进去也行。</p>
+<h2 id="编译linux嵌入式系统入门"><a class="header" href="#编译linux嵌入式系统入门">编译linux嵌入式系统入门</a></h2>
+<p>资源有很多，可惜当时是自己把坑踩遍了，才发现一堆资源的。入门级讲的比较好的<a href="https://www.youtube.com/watch?v=LSQf3iuluYo">https://www.youtube.com/watch?v=LSQf3iuluYo</a> (口音挺重，不过很清晰)</p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><p>arch tester, 之前会用app-portage/tatt做测试</p>
+<p>riscv和嵌入式开发的一些很棒的网站</p>
+<ul>
+<li><a href="https://www.rvboards.org/forum/cn/">https://www.rvboards.org/forum/cn/</a></li>
+<li><a href="https://whycan.com/index.html">https://whycan.com/index.html</a></li>
+</ul>
 <p>关于虚拟机端口转发，qemu,virsh与iptables配置
 linux提供的各种网络接口，什么是tap/tun, bridge，bonded，NIC之类的，<a href="https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking#team_device">https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking#team_device</a>
 <a href="https://aboullaite.me/kvm-qemo-forward-ports-with-iptables/">https://aboullaite.me/kvm-qemo-forward-ports-with-iptables/</a>
-<a href="https://serverfault.com/questions/903629/qemu-network-bridging-for-having-a-public-ip">https://serverfault.com/questions/903629/qemu-network-bridging-for-having-a-public-ip</a></p>
+<a href="https://serverfault.com/questions/903629/qemu-network-bridging-for-having-a-public-ip">https://serverfault.com/questions/903629/qemu-network-bridging-for-having-a-public-ip</a>。iptables的内容网络上满大街都是，关键是要理解packet要经历的流程是什么样子的，以及基本的nat知识，就很好上手了。</p>
 <p>virsh zfs pool
 <a href="https://lucanuscervus-notes.readthedocs.io/en/latest/Virtualization/Virsh/Virsh%20-%20Storage/">https://lucanuscervus-notes.readthedocs.io/en/latest/Virtualization/Virsh/Virsh%20-%20Storage/</a></p>
-<p>libguestfs 操作guest vm的镜像文件</p>
-<p>nfs &amp; sambda 方便地网络共享文件 </p>
+<p>libguestfs: 提供直接操作guest vm的镜像文件的功能</p>
+<p>nfs &amp; sambda 方便地网络共享文件,或者直接nbd network block device也行。</p>
 <p>user mode linux <a href="https://landley.net/writing/docs/UML.html">https://landley.net/writing/docs/UML.html</a></p>
 <p>有关linux启动的文章
 <a href="https://opensource.com/article/18/1/analyzing-linux-boot-process">https://opensource.com/article/18/1/analyzing-linux-boot-process</a></p>
 <p>有关irssi的使用，吐槽一下irssi文档写的真不怎么样，啥也找不到。
 <a href="https://joost.vunderink.net/blog/2012/07/01/irssi-tricks-join-channels-automatically/">https://joost.vunderink.net/blog/2012/07/01/irssi-tricks-join-channels-automatically/</a></p>
+<p>生草的引战视频<a href="https://www.youtube.com/watch?v=KPjOqRKdTkE">https://www.youtube.com/watch?v=KPjOqRKdTkE</a></p>
+<p>关于debug的文档，<a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/developing_c_and_cpp_applications_in_rhel_8/debugging-a-crashed-application_debugging-applications">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/developing_c_and_cpp_applications_in_rhel_8/debugging-a-crashed-application_debugging-applications</a> <a href="https://www.eecs.umich.edu/courses/eecs373/readings/Debugger.pdf">https://www.eecs.umich.edu/courses/eecs373/readings/Debugger.pdf</a></p>
+<p>迅速创建与host隔离的开发环境，<a href="https://www.vagrantup.com/">https://www.vagrantup.com/</a></p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><ul>
 <li>
 <p>EUSE很杂，不过官网有些不错的参考，<a href="https://packages.gentoo.org/useflags">https://packages.gentoo.org/useflags</a></p>
@@ -330,11 +377,57 @@ linux提供的各种网络接口，什么是tap/tun, bridge，bonded，NIC之类
 <a href="https://github.com/mgorny/mgorny-dev-scripts">https://github.com/mgorny/mgorny-dev-scripts</a></p>
 <p>快速改软件源码（不需要用户patch），当然只适合测试和权宜之计
 <a href="https://www.reddit.com/r/Gentoo/comments/52qhcn/how_do_i_manually_edit_my_sources_for_emerge/">https://www.reddit.com/r/Gentoo/comments/52qhcn/how_do_i_manually_edit_my_sources_for_emerge/</a></p>
-<p>在accept keywords里用<code>&lt; category/PN-9999</code>，可以避免把live ebuild也给搞进来 </p>
+<p>在accept keywords里用<code>&lt;category/PN-9999</code>，可以避免把live ebuild也给搞进来 </p>
 <p>善用btrfs和zfs的snapshot功能，比如测试一个软件之前打个snapshot，然后emerge就不必用oneshot了，测试完之后再restore回去，参考&lt;<a href="https://wiki.gentoo.org/wiki/Chroot_for_package_testing">https://wiki.gentoo.org/wiki/Chroot_for_package_testing</a>。避免在运行的时候打snapshot，相当于突然关机内存数据全没。要是对这个有要求的话可以参考<a href="http://www.linuxsystems.it/2018/10/consistently-backup-your-virtual-machines-using-libvirt-and-zfs-part-1/">Consistently backup your virtual machines using libvirt and zfs</a>。</p>
-<p>squashfs+overlayfs非常适合gentoo repo这种文件很多的目录，也适合很做测试，临时改一个文件试完马上就恢复回去</p>
-<p>KEYWORDS.dropped 是维护者主动drop某个keyword，需要维护者再发一个rekeywording request，不影响不在这个里面的arch</p>
+<p>squashfs+overlayfs非常适合gentoo repo这种文件很多的目录，也很适合做测试，临时改一个文件试完马上就恢复回去</p>
+<p>KEYWORDS.dropped 是维护者主动drop某个keyword，就是在arch前加个-，比如KEYWORDS=&quot;-riscv&quot;，比较重要的包需要维护者再发一个rekeywording request。</p>
+<p>对每个包可以设置单独的环境，参考wiki gentoo debug。比如不要在全局设置FEATURES=”test&quot;,或者对单个软件限制-j并行数量。</p>
 <p>USE debug 不是用来获取debug info的，不要随便启用它，参考gentoo debug的wiki的</p>
+<p>注意CFLAGS CXXFLAGS都是会覆盖的，在packege.env设置时要CFLAGS=&quot;${CFLAGS} -DSOME_FLAGS&quot;, 而FEATURES则是会累加到一起的，所以直接FEATURES=&quot;test&quot;就行。</p>
+<p>不同文件use flag的优先级，<a href="https://wiki.gentoo.org/wiki/USE_ORDER">https://wiki.gentoo.org/wiki/USE_ORDER</a>, 可以用<code>portageq envvar USE_ORDER</code>去查</p>
+<p>euse -i cups,可以查询某use具体在那个文件中设置的,make.conf/package.use/...</p>
+<p>有时候碰到的use flag加个括号，比如(-cups)，指的是<a href="https://archives.gentoo.org/gentoo-user/message/85a73d3af73e2efb3f28f4bada1aa0b1">https://archives.gentoo.org/gentoo-user/message/85a73d3af73e2efb3f28f4bada1aa0b1</a></p>
+<p>关于git sign off的一个坑，commit-tree不会加signed off by，网上的答案大部分都走偏了,<a href="https://pmhahn.github.io/git-signoff/">https://pmhahn.github.io/git-signoff/</a></p>
+<p>一堆的package.*文件实在头痛，可以试试mgorny大佬的flaggie</p>
+<p>除了MAKEOPT=“-jN -lM”外还可以设置EMERGE_DEFAULT_OPTS=&quot;--jobs L --load-average H&quot;，能更充分利用cpu。 </p>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="on-libunwind"><a class="header" href="#on-libunwind">on libunwind</a></h1>
+<p>libunwind 是一个编程获取call stack的API标准，为什么要是API标准而不是单独的库呢，可以参考这个<a href="https://stackoverflow.com/questions/25356691/what-kind-of-stack-unwinding-libraries-do-exist-and-whats-the-difference">What kind of stack unwinding libraries do exist and what's the difference?</a></p>
+<p>比较好的解释资料：</p>
+<ul>
+<li><a href="https://eli.thegreenplace.net/2015/programmatic-access-to-the-call-stack-in-c/">https://eli.thegreenplace.net/2015/programmatic-access-to-the-call-stack-in-c/</a></li>
+<li>中文的
+<a href="https://wdv4758h-notes.readthedocs.io/zh_TW/latest/libunwind.html">https://wdv4758h-notes.readthedocs.io/zh_TW/latest/libunwind.html</a></li>
+</ul>
+<p>strace如果编译带了libunwind，那么可以用-k来运行时查看stack trace,<a href="https://www.programmersought.com/article/6034185246/">https://www.programmersought.com/article/6034185246/</a></p>
+<h2 id="有关libunwind的一些内容"><a class="header" href="#有关libunwind的一些内容">有关libunwind的一些内容</a></h2>
+<ol>
+<li><a href="https://forums.gentoo.org/viewtopic-t-1068838-start-0.html">https://forums.gentoo.org/viewtopic-t-1068838-start-0.html</a> 这个是 static-libs use冲突，和libunwind没太大关系，但也挺有意思的。</li>
+</ol>
+<p><a href="https://bugs.gentoo.org/612602">https://bugs.gentoo.org/612602</a>
+这个主要是默认的use flag起了冲突，libunwind默认不启用static-libs，而libcxxabi默认要static-libs，有其他的包又依赖着libcxxabi，然后就打架了。可以修改其他的所有包去掉static-libs但是这样好像说会影响应该默认就能跑的clang -static，所以得把libcxxabi的static-libs留着，因此 默认给libunwind启用static-lib。</p>
+<p>然后还没完，几年后又出了<a href="https://bugs.gentoo.org/768978">https://bugs.gentoo.org/768978</a>，这次是因为zlib又依赖于libunwind了，然后社区觉得应该避免默认启用static-lib，同时又感觉人们不在乎libcxx被编成static还是不static (<a href="https://bugs.gentoo.org/760504">https://bugs.gentoo.org/760504</a>)，于是就把unwind和llvm-unwind的默认static-libs又给去掉了。结果和之前一样，libcxx默认启用static-libs，要依赖libcxxabi，然后又依赖于libunwind。（没想到吧，我又改了回去，#推一推眼镜）。于是这次终于从上层把libcxx的static-libs给去掉了。</p>
+<ol start="2">
+<li>具体到riscv上的问题
+<a href="https://github.com/libunwind/libunwind/pull/267">https://github.com/libunwind/libunwind/pull/267</a>
+有待未来研究具体细节</li>
+</ol>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="multiarchmultilib-support-on-gentoo--other-distros"><a class="header" href="#multiarchmultilib-support-on-gentoo--other-distros">Multiarch/multilib support on gentoo &amp; other distros</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><p>这部分可以参考目录下的我做报告时的pdf slide。</p>
+<p>用emerge交叉编译的时候可以把SYSROOT和ROOT放在一个目录，并起用pkgbuild生成安装包，之后通过安装包指定安装到正确的ROOT。</p>
+<p>首先要理清楚各种变量，sysroot, root, broot, cbuild,chost等等，这些在<a href="https://wiki.gentoo.org/wiki/Embedded_Handbook">https://wiki.gentoo.org/wiki/Embedded_Handbook</a> <a href="https://devmanual.gentoo.org/ebuild-writing/eapi/index.html">https://devmanual.gentoo.org/ebuild-writing/eapi/index.html</a> 以及mgorny大佬的文档都有<a href="https://mgorny.pl/articles/the-ultimate-guide-to-eapi-7.html">https://mgorny.pl/articles/the-ultimate-guide-to-eapi-7.html</a> <a href="https://mgorny.pl/articles/the-ultimate-guide-to-eapi-8.html">https://mgorny.pl/articles/the-ultimate-guide-to-eapi-8.html</a></p>
+<h2 id="binfmt-magic-string"><a class="header" href="#binfmt-magic-string">binfmt magic string</a></h2>
+<p>riscv64的
+<code>:riscv64:M::\x7f\x45\x4c\x46\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf3\x00:\xff\xff\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff:[binary_to_run]:</code></p>
+<p>riscv32的
+<code>:riscv32:M::\x7f\x45\x4c\x46\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\xf3\x00:\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff:/opt/qemu-static/qemu-riscv32:</code></p>
+<p>替换[binary_to_run]为你想用来跑riscv的软件，比如qemu-riscv user。这些玩意是怎么来的,可以参考<a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</a>以及内核文档<a href="https://www.kernel.org/doc/html/latest/admin-guide/binfmt-misc.html">https://www.kernel.org/doc/html/latest/admin-guide/binfmt-misc.html</a>。对比一下上面的64和32位，你会发现第5个字节的一个bit不同，那个其实就是32和64位的标志啦。</p>
+<p>TODO:写个自动生成binfmt magic string的python脚本</p>
+<p><a href="https://crosstool-ng.github.io/">crosstool-ng</a></p>
+<p>catalyst参考<a href="https://wiki.gentoo.org/wiki/Porting">https://wiki.gentoo.org/wiki/Porting</a> (这个文档也有一些时间了，里面关于boostrap portage的内容已经过时太久了，不过还是有参考意义的)
+interpreter: /usr/bin/qemu-riscv64</p>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><p>借花献佛。因为qemu riscv32 user static有问题，portage的multi processing会陷入死循环等待某个子进程结束，所以用yocto来做一个能用的系统，然后在里面bootstrap gentoo。之所以不用buildroot，是因为buildroot不支持安装guest里面的native compiler，并且会把header和static lib什么的都删掉,(试了下修改makefile把这步骤跳过但还是有问题)，这样做让系统非常轻量，但不反而不是我们想要的。</p>
+<p>另外推荐bootlin的buildroot和yocto的training workshop，<a href="https://bootlin.com/training/">https://bootlin.com/training/</a>,lab slides比看它们的manual可清楚多了，yocto的文档2。还有oe的wiki挺旧了，还停留在说不支持python3的时代（实际当然支持啦）。yocto官方给的30分钟的简介也很不错<a href="https://vimeo.com/36450321">https://vimeo.com/36450321</a></p>
+<p>buildroot和yocto的许多概念和gentoo都很像，倍感亲切啊。</p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><p>repoman
 pkgcore pkgcheck</p>
 <p>keyword networkmanager or mask
@@ -370,6 +463,60 @@ stable request</p>
 <li>maintain snapper &amp; tmate</li>
 </ol>
 <p>https://wiki.gentoo.org/wiki/GitHub_Pull_Requests</p>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><ol>
+<li>
+<p>window manager kde,alsa,qstreamer, pass compilation</p>
+</li>
+<li>
+<p>compile plct package on gentoo</p>
+</li>
+<li>
+<p>build binary package, binhost
+gentoo binary distro sabayon,caculatelinux
+riscv based distro?</p>
+</li>
+</ol>
+<p>@angrybird Vincent</p>
+<p>qemu,
+fftag</p>
+<p>git workflow
+profile: don't touch mask package
+refer to arm64
+emerge --unmask-write</p>
+<p>libvirt, assign ip range, 
+bridge
+vs
+usernet, server in server
+qemu in qemu
+nodejs</p>
+<p>riscv qemu/kvm on riscv plct</p>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><p>crossdev crosscompile @system
+gcc python -perl
+dm0
+python2 -&gt; portage</p>
+<p>feature buildpkg -k</p>
+<p>qemu-user chainroot
+binformat</p>
+<p>google summer of code </p>
+<p>catalyst</p>
+<p>distcc off-loads guest compilation to host
+icecream</p>
+<p>gentoo
+native -&gt; bootstrap
+-&gt; portage</p>
+<p>buildroot openembeded
+onelevel</p>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><p>dist</p>
+<p>crossdev glibc two levels</p>
+<p>2-3 short intro to gentoo, qemu-user</p>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><p>keyword more packages </p>
+<p>portage postinstall script
+https://www.reddit.com/r/Gentoo/comments/ddijch/portage_any_way_to_run_a_script_after_a_package/</p>
+<p>--cleanfail
+keepwork keepwork</p>
+<p>env
+openembeded mobile </p>
+<p>gnome lxqt lxde</p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><p>最后留一些问题方便自学探索熟悉gentoo，感谢mentor提供，我自己的回答放在文档最后对应章节。</p>
 <ol>
 <li>Keyword,USE,FEATURES, /etc/portage/make.conf都是什么。EAPI和GLEP是什么的缩写，是干什么的？
