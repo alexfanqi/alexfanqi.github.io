@@ -12,4 +12,4 @@
 - [ ] 研究xfel，uboot，oreboot/rustsbi等
 - [ ] 研究全志allwinner的fel。gentoo在d1上启动
 - [ ] 测试lxqt，lxde，lumina，kde，gnome等
- 
+- [ ] 给d1 sunxi的tools 和 xfel 写ebuild

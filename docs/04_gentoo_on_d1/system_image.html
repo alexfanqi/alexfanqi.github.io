@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>D1 image creation - Road to Gentoo on RISC-V</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../00_intro.html">Intro</a></li><li class="chapter-item expanded affix "><a href="../todo.html">TODO/timeline</a></li><li class="chapter-item expanded "><a href="../01_familiar_with_env/familiar_with_env.html"><strong aria-hidden="true">1.</strong> Get familiar with the environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../01_familiar_with_env/01_gentoo-amd64.html"><strong aria-hidden="true">1.1.</strong> Gentoo on AMD64</a></li><li class="chapter-item expanded "><a href="../01_familiar_with_env/02_gentoo_usage.html"><strong aria-hidden="true">1.2.</strong> Gentoo Usage</a></li><li class="chapter-item expanded "><a href="../01_familiar_with_env/03_qemu-riscv.html"><strong aria-hidden="true">1.3.</strong> Riscv64 on Qemu</a></li><li class="chapter-item expanded "><a href="../01_familiar_with_env/misc.html"><strong aria-hidden="true">1.4.</strong> misc</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Gentoo dev</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../02_gentoo-dev/gentoo-dev.html"><strong aria-hidden="true">2.1.</strong> Gentoo-dev random notes</a></li><li class="chapter-item expanded "><a href="../02_gentoo-dev/libunwind.html"><strong aria-hidden="true">2.2.</strong> Libunwind</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.3.</strong> Setup a test environment</div></li><li class="chapter-item expanded "><a href="../multiarch.html"><strong aria-hidden="true">2.4.</strong> Multiarch/multilib support on gentoo &amp; other distros</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Bootstrap</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../03_bootstrap/01_with-gentoo-for-riscv64.html"><strong aria-hidden="true">3.1.</strong> Bootstrap gentoo riscv64</a></li><li class="chapter-item expanded "><a href="../03_bootstrap/02_with-yocto-for-riscv32.html"><strong aria-hidden="true">3.2.</strong> Convert yocto to gentoo for riscv32</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Embedded dev on Allwinner d1</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../04_gentoo_on_d1/system_image.html" class="active"><strong aria-hidden="true">4.1.</strong> D1 image creation</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Meeting notes with mentor</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../meeting_notes/notes_01.html"><strong aria-hidden="true">5.1.</strong> week01</a></li><li class="chapter-item expanded "><a href="../meeting_notes/notes_02.html"><strong aria-hidden="true">5.2.</strong> week02</a></li><li class="chapter-item expanded "><a href="../meeting_notes/notes_03.html"><strong aria-hidden="true">5.3.</strong> week03</a></li><li class="chapter-item expanded "><a href="../meeting_notes/notes_04.html"><strong aria-hidden="true">5.4.</strong> week04</a></li><li class="chapter-item expanded "><a href="../meeting_notes/notes_05.html"><strong aria-hidden="true">5.5.</strong> week05</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Answers</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../01_familiar_with_env/02_answers.html"><strong aria-hidden="true">6.1.</strong> Gentoo Usage</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Road to Gentoo on RISC-V</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                        
+
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>2021-08-13
+目前有参考意义的镜像包括，韦东山老师做的buildroot <a href="https://gitee.com/weidongshan/neza-d1-buildroot">https://gitee.com/weidongshan/neza-d1-buildroot</a>，smael holland分离出来的boot0以及还在开发中的mainline uboot和kernel 14 <a href="https://linux-sunxi.org/Allwinner_Nezha">https://linux-sunxi.org/Allwinner_Nezha</a>, 以及 tekkamaninja傅玮做的fedora镜像<a href="https://koji.oepkgs.net/koji/taskinfo?taskID=986">https://koji.oepkgs.net/koji/taskinfo?taskID=986</a>。其中文档最友好的还是smael的。</p>
+<p>官方的tina是基于openwrt的，可惜我对openwrt还不熟。</p>
+<p>bootloader一般都是分成两个img，姑且叫boot0和boot_package吧。但具体放什么好像不太一样。
+不过偏移都默认的一样，扇区大小512byte，boot0在16扇区，boot_package在32800扇区（大约16Mib的偏移，浪费空间！）
+这就造成分区的时候要注意，不能让分区表和这两个img重叠了。</p>
+<ol>
+<li>mbr的header只有在开始第一个扇区，因此不必关心header，但第一个分区最好在16Mib之后，考虑到对齐或许放到20Mib?</li>
+<li>gpt的header默认在2-34扇区（从1开始数，一号扇区是mbr保留的），必然和boot0打架。但可以用gpart进入expert模式 j命令，移动到之后，别撞到那两个img就成。所以就是，扇区1:protected mbr, 扇区2:gpt header， 扇区M到M+31分区表。另外gpt在磁盘/sdcard的末尾还有备份，所以直接dd和sd卡大小不同镜像会有警告，直接忽略不会影响使用或者用gpart修复都行。</li>
+</ol>
+<p>boot_package 32800是可以修改的，可以通过spl(secondary program loader)也就是boot0的代码的<code>include/spare_head.h</code>文件中宏<code>UBOOT_START_SECTOR_IN_SDMMC</code>修改，比如调整到2<em>1024</em>2扇区也就是2Mib的位置。</p>
+<h2 id="smael"><a class="header" href="#smael">smael</a></h2>
+<p><a href="https://linux-sunxi.org/Allwinner_Nezha">https://linux-sunxi.org/Allwinner_Nezha</a>流程写的非常详细，里面讲的boot_package是toc1格式的。kernel似乎只能用smael做的，fedora的kernel就不显示输出。
+本来以为用这个就能手动搞出来一个完整的systemd镜像。可惜似乎由于timer相关的问题，systemd启动后会挂掉，进入opensbi unhandled trap。另外一个问题是genkernel生成的initramfs用不成。。。</p>
+<p>还有可能遇到uImage过大的情况，uboot默认的kernel上限是8Mb，可以在uboot代码的<code>include/configs/sun20iw1p1.h</code>文件单独改，也可以在<code>./common/bootm.c</code>中全局改，把宏<code>CONFIG_SYS_BOOTM_LEN</code>调高一点。</p>
+<p>还有就是driver初始化可能有延时，造成kernel的mmc还没好就要运行init了，可以加内核参数rootwait或者init-delay。</p>
+<p>另外启动时console是ttyS0，earlyprintk可以查看device tree文件，可以找到uart0被alias成了serial0,所以earlyprintk=serial0就成。</p>
+<h2 id="fedora的镜像"><a class="header" href="#fedora的镜像">fedora的镜像</a></h2>
+<p>tekkamaninja提供了boot0和fex格式的boot_package（因为社区逆向的sunxi-tools中的fex反编译工具还不支持d1,所以我也不知道fex里面是啥，strings看一下有一些环境变量，但也不止是环境变量）。这个fex文件是sunxi的特色，不得不尝。</p>
+<p>然后他的kernel dtb 和initramfs是做在一个boot.img里的，（试过了，boot分区其他文件都是可有可无的，包括extlinux，sunxi的uboot压根不认），应该是通过安卓的工具链mkbootimg做的，韦东山老师的buildroot的<code>board/Neza/d1/</code>下的post-build.sh脚本写的是<code>mkbootimg --kernel  Image  --ramdisk  ramdisk.img --board  d1-nezha_min --base  0x40200000 --kernel_offset  0x0 --ramdisk_offset  0x01000000 -o  boot.img</code>，不过我试着调整调整，没成。。</p>
+<p>听tekkamaninja说以后还要用uboot chainload grub，所以才多留一个分区。。。我查了查目前grub还是虽然支持了riscv但仍旧处于啥也不能启动的状态。</p>
+<p>在tg d1群里也有其他分析sunxi boot.img格式的人，repo <a href="https://github.com/wargio/d1-nezha-tools">https://github.com/wargio/d1-nezha-tools</a>。</p>
+<h2 id="sunxi的tina"><a class="header" href="#sunxi的tina">sunxi的tina</a></h2>
+<p>关键的内核和bootloader都在<code>./lichee/</code>下面，里面有个脚本可以参考。makefile流程都在<code>./build</code>目录，配置在<code>./device</code>目录下，包括device tree。另外readme可以看官方文档<a href="https://d1.docs.aw-ol.com/">https://d1.docs.aw-ol.com/</a>。</p>
+<p>还有这个tina对编译工具链挺敏感，官方是建议用他们的ubuntu的镜像，我在自己的ubuntu 20.04上编译按官方流程都会出问题（当然依赖都安装好了），似乎是由于一些32位的包。gentoo上会出ncurses的问题，用不成menuconfig，不过拷贝个config过去就好。不过又会由于工具链过新出现下面说的vdso问题。</p>
+<h2 id="genekernelcrossdev交叉编译内核"><a class="header" href="#genekernelcrossdev交叉编译内核">genekernel+crossdev交叉编译内核</a></h2>
+<p>genkernel看gentoo wiki就行，交叉编译不支持zfs，不过d1的那小内存用个啥zfs。。。</p>
+<p>注意某些sunxi的module不是随便选就成的，会编译失败。genkernel有时候模组编译失败不会停止，导致最后initramfs里一个模组也没有，需要看清楚或者用lsinitramfs核实。</p>
+<p>vector指令拓展需要sunxi的打过补丁的gcc，然而我们要用gentoo系统的genkernel和工具链，所以很可惜要禁用vector拓展。</p>
+<p>用高版本binutil交叉编译内核会出vdso的bug，在5.12内核中都还有，d1的5.4内核当然也受影响，需要一个新patch <a href="https://github.com/0day-ci/linux/commit/dfdcaf93f40f0d15ffc3f25128442c1688e612d6">https://github.com/0day-ci/linux/commit/dfdcaf93f40f0d15ffc3f25128442c1688e612d6</a>。或许需要把这个也加上<a href="https://patchwork.kernel.org/project/linux-riscv/patch/20201017002500.503011-1-palmerdabbelt@google.com/">https://patchwork.kernel.org/project/linux-riscv/patch/20201017002500.503011-1-palmerdabbelt@google.com/</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../03_bootstrap/02_with-yocto-for-riscv32.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../meeting_notes/notes_01.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../03_bootstrap/02_with-yocto-for-riscv32.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../meeting_notes/notes_01.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

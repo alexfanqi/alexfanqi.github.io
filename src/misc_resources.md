@@ -1,0 +1,6 @@
+- 介绍wayland比较详细清楚的文档：<https://wayland-book.com/>
+- 介绍x11的 <https://magcius.github.io/xplain/article/index.html>, <https://x.org/wiki/guide/concepts/>
+- 计算机代数系统入门，好像是自己从零做matlab的清华大佬开始的项目，<https://mathmu.github.io/MTCAS/doc/Integration.html>
+- 怎么把systemd做的非常小，<https://www.youtube.com/watch?v=ERS1OSOTGpg>
+- 关于linux蜜汁的audio系统：<https://linuxhint.com/guide_linux_audio/>
+- MLIR的科普 <https://zhuanlan.zhihu.com/p/389429818>

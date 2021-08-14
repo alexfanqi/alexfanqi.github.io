@@ -20,4 +20,5 @@ TODO:写个自动生成binfmt magic string的python脚本
 [crosstool-ng](https://crosstool-ng.github.io/)
 
 catalyst参考<https://wiki.gentoo.org/wiki/Porting> (这个文档也有一些时间了，里面关于boostrap portage的内容已经过时太久了，不过还是有参考意义的)
+
 interpreter: /usr/bin/qemu-riscv64

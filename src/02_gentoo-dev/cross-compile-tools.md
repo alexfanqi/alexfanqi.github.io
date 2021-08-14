@@ -13,4 +13,4 @@ ccache会注入错误的libstdc++库，造成某些诡异的错误比如`/libstd
 6. 不建议把distcc暴露到外网去，别人能够通过distcc用户权限任意执行代码。
 7. 有个zeroconf的use flag，host多的话可以试试。
 8. client端空间紧张的话可以不用在client端设置ccache，wiki里面client的设置里有关ccache的全忽略就行了。
-9. 某些包用distcc编译会失败，可以试试no-distcc-env
+9. 某些包用distcc编译会失败，可以试试no-distcc-env。用no-distcc的话记住设置`LOCAL_MAKEOPTS`,详见`env/no-distcc.conf`目录。

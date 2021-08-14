@@ -18,7 +18,8 @@
     - [Bootstrap gentoo riscv64](03_bootstrap/01_with-gentoo-for-riscv64.md)
     - [Convert yocto to gentoo for riscv32](03_bootstrap/02_with-yocto-for-riscv32.md)
 
-- [Embedded dev on d1]()
+- [Embedded dev on Allwinner d1]()
+    - [D1 image creation](04_gentoo_on_d1/system_image.md)
 
 - [Meeting notes with mentor]()
     - [week01](meeting_notes/notes_01.md)

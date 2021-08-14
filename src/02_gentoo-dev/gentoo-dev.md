@@ -24,7 +24,7 @@ mgorny大佬的一些dev用小脚本
 
 在accept keywords里用`<category/PN-9999`，可以避免把live ebuild也给搞进来 
 
-善用btrfs和zfs的snapshot功能，比如测试一个软件之前打个snapshot，然后emerge就不必用oneshot了，测试完之后再restore回去，参考<<https://wiki.gentoo.org/wiki/Chroot_for_package_testing>。避免在运行的时候打snapshot，相当于突然关机内存数据全没。要是对这个有要求的话可以参考[Consistently backup your virtual machines using libvirt and zfs](http://www.linuxsystems.it/2018/10/consistently-backup-your-virtual-machines-using-libvirt-and-zfs-part-1/)。
+善用btrfs和zfs的snapshot功能，比如测试一个软件之前打个snapshot，然后emerge就不必用oneshot了，测试完之后再restore回去，参考<https://wiki.gentoo.org/wiki/Chroot_for_package_testing>。避免在运行的时候打snapshot，相当于突然关机内存数据全没。要是对这个有要求的话可以参考[Consistently backup your virtual machines using libvirt and zfs](http://www.linuxsystems.it/2018/10/consistently-backup-your-virtual-machines-using-libvirt-and-zfs-part-1/)。
 
 squashfs+overlayfs非常适合gentoo repo这种文件很多的目录，也很适合做测试，临时改一个文件试完马上就恢复回去
 
@@ -47,3 +47,9 @@ euse -i cups,可以查询某use具体在那个文件中设置的,make.conf/packa
 一堆的package.*文件实在头痛，可以试试mgorny大佬的flaggie
 
 除了MAKEOPT=“-jN -lM”外还可以设置EMERGE_DEFAULT_OPTS="--jobs L --load-average H"，能更充分利用cpu。 
+
+keyword中遇到循环依赖处理方式: 比如qtchooser\[test\]->qttest->qtgui-qtchooser，这种情况下只要都测试好了，可以直接keyword，不需要mask test再keyword再unmask。
+
+gui qt5 gtk这几个use flag含义比较模糊，可以参考当初讨论如何设计的邮件<https://archives.gentoo.org/gentoo-dev/message/eecad370248118c474a0d819fa7f3576>
+
+使用xvbf和x11vnc可以在没有显示屏的虚拟机中测试gui软件，参考<https://en.wikipedia.org/wiki/Xvfb>
